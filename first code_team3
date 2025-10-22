@@ -1,0 +1,33 @@
+#include<stdio.h>
+
+int add(int n,int m){
+  
+}//더하기
+
+int minus(int n,int m){
+
+  
+}//빼기
+
+int multi(int n,int m){
+
+  
+}//곱하기
+
+int divi(int n,int m){
+
+  
+}//나누기
+
+int remain(int n,int m){
+
+  
+}//나머지 연산
+
+int main(){
+int a,b;
+printf("Enter two number>>");
+scanf("%d%d",&a,&b);
+printf("Value: %d\n",);
+
+}
