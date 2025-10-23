@@ -20,8 +20,12 @@ int divi(int n,int m){
 }//나누기
 
 int remain(int n,int m){
-
-  
+if(n<m){
+int t=n;
+n=m;
+m=t;
+}
+return n%m;  
 }//나머지 연산
 
 int main(){
