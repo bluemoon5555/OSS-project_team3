@@ -15,7 +15,7 @@ int multi(int n,int m){
 }//곱하기
 
 int divi(int n,int m){
-
+	return n * m;
   
 }//나누기
 
@@ -41,7 +41,7 @@ printf("%d * %d=%d\n",a,b,multi(a,b));
 
 printf("%d / %d=%d\n",a,b,divi(a,b));
 
-printf("%d % %d=%d\n",a,b,remain(a,b));
+printf("%d %% %d=%d\n",a,b,remain(a,b));
 
 return 0;
 
