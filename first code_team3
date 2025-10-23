@@ -32,6 +32,17 @@ int main(){
 int a,b;
 printf("Enter two number>>");
 scanf("%d%d",&a,&b);
-printf("Value: %d\n",);
+
+printf("%d + %d=%d\n",a,b,add(a,b));
+
+printf("%d - %d=%d\n",a,b,minus(a,b));
+
+printf("%d * %d=%d\n",a,b,multi(a,b));
+
+printf("%d / %d=%d\n",a,b,divi(a,b));
+
+printf("%d % %d=%d\n",a,b,remain(a,b));
+
+return 0;
 
 }
