@@ -10,12 +10,12 @@ int minus(int n,int m){
 }//빼기
 
 int multi(int n,int m){
-
+	return n * m;
   
 }//곱하기
 
 int divi(int n,int m){
-	return n * m;
+
   
 }//나누기
 
