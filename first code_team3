@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int add(int n,int m){
-  
+  return a + b;
 }//더하기
 
 int minus(int n,int m){
