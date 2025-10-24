@@ -4,9 +4,9 @@ int add(int n,int m){
   return a + b;
 }//더하기
 
-int minus(int n,int m){
-
-  
+int minus(int n,int m)
+{
+	return(n - m);
 }//빼기
 
 int multi(int n,int m){
