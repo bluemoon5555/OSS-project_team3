@@ -15,8 +15,11 @@ int multi(int n,int m){
 }//곱하기
 
 int divi(int n,int m){
-
-  
+    if (m == 0) {
+        printf("error: division by zero!/n");
+        return 0;
+    }
+    return n / m;    
 }//나누기
 
 int remain(int n,int m){
