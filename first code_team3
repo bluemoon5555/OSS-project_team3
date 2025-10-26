@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int add(int n,int m){
-  return a + b;
+  return n + m;
 }//더하기
 
 int minus(int n,int m)
@@ -44,7 +44,7 @@ printf("%d * %d=%d\n",a,b,multi(a,b));
 
 printf("%d / %d=%d\n",a,b,divi(a,b));
 
-printf("%d %% %d=%d\n",a,b,remain(a,b));
+printf("%d % %d=%d\n",a,b,remain(a,b));
 
 return 0;
 
