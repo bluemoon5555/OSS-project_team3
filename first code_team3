@@ -34,7 +34,7 @@ return n%m;
 int main(){
 int a,b;
 printf("Enter two number>>");
-scanf("%d%d",&a,&b);
+scanf_s("%d%d",&a,&b);
 
 printf("%d + %d=%d\n",a,b,add(a,b));
 
