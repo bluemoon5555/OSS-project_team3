@@ -43,21 +43,22 @@ void DrawHuman(int humanY)
 	printf("      $$$$$ \n");
 	printf("       $$$  \n");
 	printf("        $   \n");
-	printf("       $$$$$     \n");
-	printf("     $ $$$$ $   \n");
-	printf("   $   $$$$   $\n");
-	printf("       $$$$    \n");
-	printf("       $$$    \n");
-	printf("      $$  $$    \n");
-	printf("      $$  $$     \n");
+	printf("       $$     \n");
+	printf("     $ $$ $   \n");
+	printf("   $   $$   $\n");
+	printf("       $$    \n");
+	printf("       $$    \n");
+	
 	if (legFlag)
 	{
+		printf("     $     $    \n");
 		printf("     $    $$$    \n");
-		printf("     $$          ");
+		printf("    $$          ");
 		legFlag = 0;
 	}
 	else
 	{
+		printf("      $   $    \n");
 		printf("     $$$  $     \n");
 		printf("          $$    ");
 		legFlag = 1;
@@ -77,6 +78,40 @@ void DrawTree(int treeX)
 	printf(" $$ ");
 	GotoXY(treeX, TREE_BOTTOM_Y + 4);
 	printf(" $$ ");
+}
+
+// 충돌 했을때 게임오버
+void DrawGameOver(const int score)
+{
+	system("cls");
+	int x = 18;
+	int y = 8;
+	GotoXY(x, y);
+	printf("===========================");
+	GotoXY(x, y + 1);
+	printf("======G A M E O V E R======");
+	GotoXY(x, y + 2);
+	printf("===========================");
+	/*GotoXY(x, y + 5);
+	printf("SCORE : %d", score);*/
+
+	printf("\n\n\n\n\n\n\n\n\n");
+	system("pause");
+}
+
+// 충돌했으면 1아니면 0반환
+int isCollision(const int treeX, const int humanY)
+{
+	//장애물의 X가 사람의 몸체쪽에 있을때,
+	//사람의 높이가 충분하지 않다면 충돌로 처리
+	GotoXY(0, 0);
+	printf("treeX : %d, dinoY : %d", treeX, humanY); //이런식으로 적절한 X, Y를 찾습니다.
+	if (treeX <= 8 && treeX >= 4 &&
+		humanY > 8)
+	{
+		return 1; // 충돌
+	}
+	return 0; // 비충돌
 }
 
 int main()
@@ -99,7 +134,9 @@ int main()
 
 		while (1)	//한 판에 대한 루프
 		{
-
+			//충돌체크
+			if (isCollision(treeX, humanY))
+				break;
 
 			//z키가 눌렸고, 바닥(isBottom이 1)일 때 점프
 			if (GetKeyDown() == 'z' && isBottom)
@@ -159,7 +196,8 @@ int main()
 				break;
 			}
 		}
-		if (score >= GOAL_SCORE) break;
+		if (score < GOAL_SCORE) DrawGameOver(score);   //점수 충족하지 못했으면 재도전, 충족 시 다음 상황으로
+		else break;
 	}
 	return 0;
 }
