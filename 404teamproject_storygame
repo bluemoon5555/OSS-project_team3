@@ -17,9 +17,15 @@ void slowPrintChar(const char* text, int delay) {
 // --------------- 장면(여러 줄) 출력 후 화면 전환 ---------------
 void scene(const char* text) {
     slowPrintChar(text, 28);
-    printf("\n\n[아무 키나 누르세요...]");
-    _getch();
-    system("cls"); // 장면 종료 후 화면 클리어
+
+    printf("\n\n[Enter 키를 누르면 다음 장면으로 넘어갑니다]");
+
+    while (1) {
+        int key = _getch();
+        if (key == '\r') break;  // Enter(ASCII 13)만 인정
+    }
+
+    system("cls");
 }
 
 void printMenu();
