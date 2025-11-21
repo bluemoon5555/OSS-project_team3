@@ -51,7 +51,6 @@ int main() {
         printf("맞았습니다.\n");
 
     // 메모리 해제
-
     free(pNums);
 
     return 0;
