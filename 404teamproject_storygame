@@ -42,6 +42,14 @@ void printMenu();
 void startGame();
 void loadGame();
 
+void fileprint(char *f){  //파일출력함수
+    FILE *p=fopen(f,"r");
+    if(!p)return;
+    char line[500];
+    while(fgets(line,sizeof(line),p))printf("%s",line);
+    fclose(p);
+}
+
 int main() {
     int choice;
 
