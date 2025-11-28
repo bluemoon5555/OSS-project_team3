@@ -82,28 +82,17 @@ void leftroom2F(){//조직방
 while(1){
 int s=_getch();
 switch(s){
-    case'1':  //자료 1
-    system("cls");
-    fileprint("data1_left.txt");
-    while(_getch()!=27);
-    system("cls");
-    fileprint("leftroom.txt");
-    break;
-    case'2':system("cls");fileprint("data1_left.txt");
+    case'1':system("cls");fileprint("data1_left.txt");//자료 1
     scene("\n...뒷자리가 찢어져있네\n"
     "나머지 조각이 방 어딘가에 남아있을거야...\n"
 "잘 찾아봐야겠어");
-    //자료 2
     fileprint("data1_left.txt");
     while(_getch()!=27);
     system("cls");fileprint("leftroom.txt");break;
-    case'3':system("cls");fileprint("data1_left.txt"); //자료3
+    case'2':system("cls");fileprint("data4_left.txt");//자료 2
     while(_getch()!=27);
     system("cls");fileprint("leftroom.txt");break;
-    case'4':system("cls");fileprint("data4_left.txt"); //자료4
-    while(_getch()!=27);
-    system("cls");fileprint("leftroom.txt");break;
-    case 27:return;
+    case 27:return;//esc누르면 자료보기 종료
   }
  }
 }
