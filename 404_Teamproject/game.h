@@ -22,7 +22,7 @@ void DrawTree(int treeX);
 void DrawGameOver(const int score);
 
 
-// 충돌했으면 1(아니면 0(반환
+// 충돌했으면 1아니면 0반환
 int isCollision(const int treeX, const int humanY);
 
 void startGame();

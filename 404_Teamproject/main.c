@@ -1,4 +1,5 @@
 #include "game.h"
+#include "2F.h"
 #include<stdio.h>
 
 int main()
