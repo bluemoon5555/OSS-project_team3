@@ -4,6 +4,10 @@
 
 int main()
 {
+	//1층
+	choice1F();
+
+
 	//2층
 	system("cls");
 	choice2F();
