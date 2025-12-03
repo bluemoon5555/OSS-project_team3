@@ -1,12 +1,12 @@
 #include "game.h"
 #include "2F.h"
+#include "1F.h"
 #include<stdio.h>
 
 int main()
 {
 	//1층
 	choice1F();
-
 
 	//2층
 	system("cls");
