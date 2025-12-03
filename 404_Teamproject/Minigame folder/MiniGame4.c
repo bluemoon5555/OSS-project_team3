@@ -23,7 +23,7 @@ int main() {
         scanf("%d", &guess);
 
         if (guess == answer) {
-            printf("성공!!\n");
+            printf("Success!!\n");
             break;
         } else if (guess < answer) {
             printf("더 큰 숫자입니다.\n");
