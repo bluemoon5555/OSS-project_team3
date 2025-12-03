@@ -29,7 +29,7 @@ void startScreen() {
     int midY = HEIGHT / 2 - 2;
 
     gotoxy(midX, midY);
-    printf("레이저 피하기 GAME");
+    printf("=== 레이저 피하기 GAME ===");
 
     gotoxy(midX + 2, midY + 2);
     printf("START (Press Enter)");
