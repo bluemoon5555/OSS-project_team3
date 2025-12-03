@@ -1,4 +1,7 @@
 #include "game.h"
+#include "game2.h"
+#include "game3.h"
+#include "game4.h"
 #include "1F.h"
 #include "2F.h"
 #include "3F.h"
@@ -22,10 +25,18 @@ int main()
 	room1();
 	corridor();
 
-	//미니게임 
+	//미니게임 1
 	SetConsoleView();
 	startGame();
-	//미니게임
+
+	//미니게임2
+	number_Game();
+
+	//미니게임3
+	
+
+	//미니게임4
+	Guess_number();
 
 	return 0;
 }
