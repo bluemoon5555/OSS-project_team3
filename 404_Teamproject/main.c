@@ -1,6 +1,8 @@
 #include "game.h"
-#include "2F.h"
 #include "1F.h"
+#include "2F.h"
+#include "3F.h"
+#include "4F.h"
 #include<stdio.h>
 
 int main()
