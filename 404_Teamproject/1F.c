@@ -2,8 +2,10 @@
 #include<windows.h>
 #include<conio.h>
 #include<stdlib.h>
-#include"1F.h"
+#include"4F.h"
+#include"3F.h"
 #include"2F.h"
+#include"1F.h"
 
 int keyhave = 0;//열쇠 소유 여부
 

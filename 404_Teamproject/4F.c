@@ -4,88 +4,90 @@
 #include <conio.h>
 #include <stdlib.h>
 #include"4F.h"
+#include"3F.h"
+#include"2F.h"
+#include"1F.h"
 #define MAX_ITEMS 10
+//char inventory[MAX_ITEMS][50];
+//int itemCount = 0;
 
-char inventory[MAX_ITEMS][50];
-int itemCount = 0;
+//void addItem(const char* item) {
+//    // 이미 있는 아이템인지 확인
+//    for (int i = 0; i < itemCount; i++) {
+//        if (strcmp(inventory[i], item) == 0) {
+//            return; // 이미 있으므로 추가 X
+//        }
+//    }
+//
+//    // 새 아이템 추가
+//    if (itemCount < MAX_ITEMS) {
+//        strcpy(inventory[itemCount], item);
+//        itemCount++;
+//    }
+//}
+//
+//int hasItem(const char* item) {
+//    for (int i = 0; i < itemCount; i++) {
+//        if (strcmp(inventory[i], item) == 0) return 1;
+//    }
+//    return 0;
+//}
 
-void addItem(const char* item) {
-    // 이미 있는 아이템인지 확인
-    for (int i = 0; i < itemCount; i++) {
-        if (strcmp(inventory[i], item) == 0) {
-            return; // 이미 있으므로 추가 X
-        }
-    }
-
-    // 새 아이템 추가
-    if (itemCount < MAX_ITEMS) {
-        strcpy(inventory[itemCount], item);
-        itemCount++;
-    }
-}
-
-int hasItem(const char* item) {
-    for (int i = 0; i < itemCount; i++) {
-        if (strcmp(inventory[i], item) == 0) return 1;
-    }
-    return 0;
-}
-
-void showInventory() {
-    system("cls");
-    printf("==== 인벤토리 ====\n\n");
-
-    if (itemCount == 0) {
-        printf("인벤토리가 비어 있습니다.\n");
-    }
-    else {
-        for (int i = 0; i < itemCount; i++) {
-            printf("%d) %s\n", i + 1, inventory[i]);
-        }
-    }
-
-    printf("\n[ESC 키를 누르면 돌아갑니다]");
-
-    while (_getch() != 27); // ESC
-}
+//void showInventory() {
+//    system("cls");
+//    printf("==== 인벤토리 ====\n\n");
+//
+//    if (itemCount == 0) {
+//        printf("인벤토리가 비어 있습니다.\n");
+//    }
+//    else {
+//        for (int i = 0; i < itemCount; i++) {
+//            printf("%d) %s\n", i + 1, inventory[i]);
+//        }
+//    }
+//
+//    printf("\n[ESC 키를 누르면 돌아갑니다]");
+//
+//    while (_getch() != 27); // ESC
+//}
 
 
-void slowPrintChar(const char* text, int delay) {
-    while (*text) {
-        if (_kbhit()) {
-            _getch();
-            printf("%s", text);
-            fflush(stdout);
-            return;
-        }
-        putchar(*text);
-        fflush(stdout);
-        Sleep(delay);
-        text++;
-    }
-}
+//void slowPrintChar(const char* text, int delay) {
+//    while (*text) {
+//        if (_kbhit()) {
+//            _getch();
+//            printf("%s", text);
+//            fflush(stdout);
+//            return;
+//        }
+//        putchar(*text);
+//        fflush(stdout);
+//        Sleep(delay);
+//        text++;
+//    }
+//}
 
-void scene(const char* text) {
-    slowPrintChar(text, 28);
-    printf("\n\n[Enter 키를 누르면 다음 장면으로 넘어갑니다]");
-    while (_getch() != '\r');
-    system("cls");
-}
+//void scene(const char* text) {
+//    slowPrintChar(text, 28);
+//    printf("\n\n[Enter 키를 누르면 다음 장면으로 넘어갑니다]");
+//    while (_getch() != '\r');
+//    system("cls");
+//}
 
-void showAsciiArtFull(const char* filename) {
-    FILE* fp = fopen(filename, "r");
-    if (!fp) {
-        printf("%s 파일을 찾을 수 없습니다!\n", filename);
-        return;
-    }
-    char line[512];
-    while (fgets(line, sizeof(line), fp)) {
-        printf("%s", line);
-    }
-    fclose(fp);
-}
+//void showAsciiArtFull(const char* filename) {
+//    FILE* fp = fopen(filename, "r");
+//    if (!fp) {
+//        printf("%s 파일을 찾을 수 없습니다!\n", filename);
+//        return;
+//    }
+//    char line[512];
+//    while (fgets(line, sizeof(line), fp)) {
+//        printf("%s", line);
+//    }
+//    fclose(fp);
+//}
 
-int room1() {
+void room1() {
     system("cls");
     showAsciiArtFull("room1.txt");
 

@@ -2,7 +2,10 @@
 #include<conio.h>
 #include<stdlib.h>
 #include<windows.h> 
+#include"4F.h"
+#include"3F.h"
 #include"2F.h"
+#include"1F.h"
 
 void slowPrintChar(const char* text, int delay) {
     while (*text) {

@@ -3,15 +3,11 @@
 #include <windows.h>
 #include <conio.h>
 #include <stdlib.h>
-#define MAX_ITEMS 10
+#include"4F.h"
 #include"3F.h"
-
-void room3();
-void room3_plus();
-void floor3();
-void floor3_left();
-void floor3_right();
-void floor2();
+#include"2F.h"
+#include"1F.h"
+#define MAX_ITEMS 10
 
 char inventory[MAX_ITEMS][50];
 int itemCount = 0;
@@ -50,27 +46,27 @@ void showInventory() {
     while (_getch() != 27); // ESC
 }
 
-void slowPrintChar(const char* text, int delay) {
-    while (*text) {
-        if (_kbhit()) {
-            _getch();
-            printf("%s", text);
-            fflush(stdout);
-            return;
-        }
-        putchar(*text);
-        fflush(stdout);
-        Sleep(delay);
-        text++;
-    }
-}
+//void slowPrintChar(const char* text, int delay) {
+//    while (*text) {
+//        if (_kbhit()) {
+//            _getch();
+//            printf("%s", text);
+//            fflush(stdout);
+//            return;
+//        }
+//        putchar(*text);
+//        fflush(stdout);
+//        Sleep(delay);
+//        text++;
+//    }
+//}
 
-void scene(const char* text) {
-    slowPrintChar(text, 28);
-    printf("\n\n[Enter 키를 누르면 다음 장면으로 넘어갑니다]");
-    while (_getch() != '\r');
-    system("cls");
-}
+//void scene(const char* text) {
+//    slowPrintChar(text, 28);
+//    printf("\n\n[Enter 키를 누르면 다음 장면으로 넘어갑니다]");
+//    while (_getch() != '\r');
+//    system("cls");
+//}
 
 void showAsciiArtFull(const char* filename) {
     FILE* fp = fopen(filename, "r");
@@ -84,174 +80,6 @@ void showAsciiArtFull(const char* filename) {
     }
     fclose(fp);
 }
-
-/* 기존의 room1, room3 등 함수들은 그대로 두되 메인 흐름은 floor3만 시작하도록 변경.
-   (원하면 room1, corridor 등 함수들은 제거해도 됨) */
-
-void room1() {
-    /* 원래 코드를 유지 (사용 안됨) */
-    system("cls");
-    showAsciiArtFull("room1.txt");
-    slowPrintChar("\n=== 4층 방 1 ===\n", 28);
-    slowPrintChar("문제를 풀어야 복도로 나갈 수 있습니다.\n\n", 28);
-    slowPrintChar("[Enter 키를 누르면 문제를 풉니다]", 28);
-    while (1) {
-        int key = _getch();
-        if (key == 'i' || key == 'I') {
-            showInventory();
-            system("cls");
-            showAsciiArtFull("room1.txt");
-            printf("\n=== 4층 방 1 ===\n문제를 풀어야 복도로 나갈 수 있습니다.");
-            printf("\n\n[Enter 키를 누르면 문제를 풉니다]");
-        }
-        else if (key == '\r') {
-            break;
-        }
-    }
-
-    system("cls");
-    showAsciiArtFull("room1.txt");
-    slowPrintChar("\n=== 4층 방 1 ===\n", 28);
-    int ans;
-    while (1) {
-        slowPrintChar("Q1. 다음 중 C 언어에서 반복문이 아닌 것은?\n"
-            "1) for\n2) while\n3) switch\n4) do-while\n정답 입력: ", 20);
-        while (_kbhit()) _getch();
-        scanf("%d", &ans);
-        if (ans == 3) {
-            slowPrintChar("\n정답입니다. 복도로 나갑니다.\n", 20);
-            printf("\n[Enter 키를 눌러 복도로 이동]\n");
-            while (_getch() != '\r');
-            system("cls");
-            break;
-        }
-        slowPrintChar("\n틀렸습니다. 다시 시도하세요.\n", 20);
-        Sleep(400);
-        system("cls");
-        showAsciiArtFull("room1.txt");
-        slowPrintChar("\n=== 4층 방 1 ===\n다시 문제를 풉니다.\n", 28);
-    }
-}
-
-void room3() {
-    system("cls");
-    showAsciiArtFull("room3.txt");
-    while (1) {
-        int key = _getch();
-        if (key == 'i' || key == 'I') {
-            showInventory();
-            system("cls");
-            showAsciiArtFull("room3.txt");
-        }
-        else if (key == 'R' || key == 'r') {
-            room3_plus();
-            system("cls");
-            showAsciiArtFull("room3.txt");
-        }
-        else if (key == 'L' || key == 'l') {
-            system("cls");
-            if (hasItem("밧줄")) {
-                slowPrintChar("밧줄을 이용해 아래층으로 내려갑니다...\n", 20);
-                Sleep(400);
-                slowPrintChar("하지만 1층은 아직 구현 중입니다.\n", 20);
-                slowPrintChar("곧 업데이트될 예정입니다.\n", 20);
-                printf("\n[Enter 키를 누르면 돌아갑니다]");
-                while (_getch() != '\r');
-                system("cls");
-                showAsciiArtFull("room3.txt");
-            }
-            else {
-                slowPrintChar("사용할 수 없습니다.\n", 20);
-                slowPrintChar("다음에 다시 시도해주세요.\n", 20);
-                printf("\n[Enter 키를 누르면 돌아갑니다]");
-                while (_getch() != '\r');
-                system("cls");
-                showAsciiArtFull("room3.txt");
-            }
-        }
-        else if (key == 27) {
-            break;
-        }
-    }
-}
-
-void room3_plus() {
-    system("cls");
-    showAsciiArtFull("room3 plus.txt");
-    while (1) {
-        int key = _getch();
-        if (key == '1') {
-            addItem("망치");
-            Sleep(200);
-        }
-        else if (key == '2') {
-            addItem("담요");
-            Sleep(200);
-        }
-        else if (key == '3') {
-            addItem("밧줄");
-            Sleep(200);
-        }
-        else if (key == 'i' || key == 'I') {
-            showInventory();
-            system("cls");
-            showAsciiArtFull("room3 plus.txt");
-        }
-        else if (key == 27) {
-            break;
-        }
-    }
-}
-
-/* corridor() 는 사용하지 않음(3층 전용 실행). 원하면 삭제 가능. */
-void corridor() {
-    system("cls");
-    showAsciiArtFull("room2.txt");
-    while (1) {
-        int key = _getch();
-        if (key == 'i' || key == 'I') {
-            showInventory();
-            system("cls");
-            showAsciiArtFull("room2.txt");
-        }
-        else if (key == 'L' || key == 'l') {
-            system("cls");
-            showAsciiArtFull("room1.txt");
-            while (1) {
-                int subKey = _getch();
-                if (subKey == 'i' || subKey == 'I') {
-                    showInventory();
-                    system("cls");
-                    showAsciiArtFull("data.txt");
-                }
-                else if (subKey == 27) {
-                    system("cls");
-                    showAsciiArtFull("room2.txt");
-                    break;
-                }
-            }
-        }
-        else if (key == 'R' || key == 'r') {
-            system("cls");
-            room3();
-            system("cls");
-            showAsciiArtFull("room2.txt");
-        }
-        else if (key == 'D' || key == 'd') {
-            system("cls");
-            slowPrintChar("3층으로 내려갑니다.\n", 20);
-            printf("\n계속하려면 Enter를 누르세요...");
-            fflush(stdout);
-            getchar();
-            getchar();
-            system("cls");
-            floor3();
-            system("cls");
-            showAsciiArtFull("room2.txt");
-        }
-    }
-}
-
 /* ========== 수정된 floor3() ========== */
 /*  - 매 루프 시작 시 31.txt를 다시 그리도록 함
     - 서브룸에서 돌아오면 화면이 갱신되어 항상 3층 복도로 복귀된 것처럼 보임 */
@@ -445,10 +273,4 @@ void floor2() {
     slowPrintChar("아직 구현되지 않았습니다.\n", 20);
     printf("\n[ESC 키를 누르면 돌아갑니다]");
     while (_getch() != 27);
-}
-
-int main() {
-    // 4층 관련 시작 함수 호출 제거. 바로 3층 루프 실행.
-    floor3();
-    return 0;
 }
