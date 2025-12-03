@@ -33,7 +33,7 @@ int main()
 	number_Game();
 
 	//미니게임3
-	
+	start_game();
 
 	//미니게임4
 	Guess_number();
