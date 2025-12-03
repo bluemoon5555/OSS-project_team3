@@ -5,7 +5,7 @@
 #include"4F.h"
 #include"3F.h"
 #include"2F.h"
-
+#include"1F.h"
 void slowPrintChar(const char* text, int delay) {
     while (*text) {
         // 키 눌렀는지 체크
@@ -65,6 +65,10 @@ void choice2F() { //2층에서 방 선택하기
         else if(s=='U'||s=='u'){
             system("cls");
 floor3();
+        }
+        else if(s=='D'||s=='d'){
+            system("cls");
+            choice1F();
         }
         else continue;
     }
