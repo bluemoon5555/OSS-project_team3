@@ -29,7 +29,7 @@ void startScreen() {
     int midY = HEIGHT / 2 - 2;
 
     gotoxy(midX, midY);
-    printf("레이저 피하기 GAME");
+    printf("=== 레이저 피하기 GAME ===");
 
     gotoxy(midX + 2, midY + 2);
     printf("START (Press Enter)");
@@ -119,9 +119,9 @@ int main() {
     system("cls");
 
     if (gameOver == 2) {
-        printf("\n\n   성공!! \n\n");
+        printf("\n\n   Success!! \n\n");
     } else {
-        printf("\n\n   실패!! \n\n");
+        printf("\n\n   Fail.. \n\n");
     }
 
     system("pause");
