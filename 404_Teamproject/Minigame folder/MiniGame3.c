@@ -121,7 +121,7 @@ int main() {
     if (gameOver == 2) {
         printf("\n\n   Success!! \n\n");
     } else {
-        printf("\n\n   Fail..= \n\n");
+        printf("\n\n   Fail.. \n\n");
     }
 
     system("pause");
