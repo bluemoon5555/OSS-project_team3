@@ -5,7 +5,6 @@
 #include"4F.h"
 #include"3F.h"
 #include"2F.h"
-#include"1F.h"
 
 void slowPrintChar(const char* text, int delay) {
     while (*text) {
@@ -62,6 +61,10 @@ void choice2F() { //2층에서 방 선택하기
             rightroom2F();
             system("cls");
             fileprint("floor2.txt");
+        }
+        else if(s=='U'||s=='u'){
+            system("cls");
+floor3();
         }
         else continue;
     }

@@ -63,6 +63,10 @@ void choice1F() { // 1층
             system("cls");
             door();
         }
+        else if(s=='U'||s=='u'){
+            system("cls");
+            choice2F();
+        }
         else continue;
     }
 }
