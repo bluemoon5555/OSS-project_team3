@@ -81,19 +81,7 @@ int main() {
 // ---------------------- 메뉴 ----------------------
 void printMenu() {
     system("cls");
-
-    printf("=========================================\n");
-    printf("|                                       |\n");
-    printf("|                                       |\n");
-    printf("|             공포 RPG 게임             |\n");
-    printf("|                                       |\n");
-    printf("|             [1] START                 |\n");
-    printf("|             [2] LOAD                  |\n");
-    printf("|             [3] EXIT                  |\n");
-    printf("|                                       |\n");
-    printf("|        숫자를 눌러 시작하세요...      |\n");
-    printf("|                                       |\n");
-    printf("=========================================\n");
+fileprint("startmenu.txt");
 }
 
 
