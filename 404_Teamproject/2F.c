@@ -112,6 +112,11 @@ void rightroom2F() {//보안실
     printf("비밀번호를 입력하세요 : ");
     while (1) {
         int s = _getch();
+         if (s == 27) {  
+            system("cls");
+            choice2F();     // 2층 선택 화면으로 복귀
+            return;
+        }
         if (s == '\r') { //엔터 입력 시 종료
             input[i] = '\0';
             break;
