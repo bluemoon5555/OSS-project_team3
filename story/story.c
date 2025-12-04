@@ -94,6 +94,9 @@ void startGame() {
          system("cls");break;
      }
  }
+  fileprint("startgame1.txt");
+  Sleep(1000);
+  system("cls");
     // ---- 장면 1 ----
     scene(
         "(좁은 원룸, 책상 위에는 노트북과 이력서가 어지럽게 놓여 있다.)\n"
