@@ -45,6 +45,16 @@ void fileprint(char* f) {  //텍스트 화면 출력하는 함수
     fclose(p);
 }
 
+void chooseMiniGame() {//미니게임 3개 중 랜덤출제
+    int r = rand() % 3;  // 0,1,2 중 하나
+
+    switch (r) {
+    case 0: start_game(); break;//위에서 떨어지는 거 피하기
+    case 1: number_Game(); break;//게임2
+    case 2: startGame(); break;//공룡게임
+    }
+}
+
 void choice2F() { //2층에서 방 선택하기
     fileprint("floor2.txt");
 
