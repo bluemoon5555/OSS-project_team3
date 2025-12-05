@@ -55,10 +55,128 @@ void chooseMiniGame() {//미니게임 3개 중 랜덤출제
     }
 }
 
+void event2F1() { //2층 복도
+    int trigger = rand() % 100;  
+    if (trigger >= 98) return;
+    system("cls");
+    printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
+    printf(">> 2초 안에 선택하세요!\n");
+
+    DWORD start = GetTickCount();
+
+    while (1) {
+        if (GetTickCount() - start > 2000) {
+            printf("\n시간 초과! 조직원이 발견했다!\n");
+            Sleep(1000);
+            chooseMiniGame();
+            return;
+        }
+
+        if (_kbhit()) {
+            char c = _getch();
+
+            if (c == 'Y' || c == 'y') {
+                printf("\n숨는 데 성공했다...\n");
+                printf("\n[아무 키나 눌러 계속...]\n");
+                _getch();
+
+                system("cls");
+                fileprint("floor2.txt");
+                return;  // choice2F 화면으로 복귀
+            }
+            else if (c == 'N' || c == 'n') {
+                printf("\n숨지 않았다… 조직원이 온다!\n");
+                Sleep(1000);
+                chooseMiniGame();
+                return;
+            }
+        }
+    }
+}
+
+void event2F2() {//왼쪽 방
+    int trigger = rand() % 100;  
+    if (trigger >= 98) return;
+    system("cls");
+    printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
+    printf(">> 2초 안에 선택하세요!\n");
+
+    DWORD start = GetTickCount();
+
+    while (1) {
+        if (GetTickCount() - start > 2000) {
+            printf("\n시간 초과! 조직원이 발견했다!\n");
+            Sleep(1000);
+            chooseMiniGame();
+            return;
+        }
+
+        if (_kbhit()) {
+            char c = _getch();
+
+            if (c == 'Y' || c == 'y') {
+                printf("\n숨는 데 성공했다...\n");
+                printf("\n아무 키나 눌러 계속...\n");
+                _getch();
+
+                system("cls");
+                fileprint("leftroom.txt");
+                return;  // leftroom 화면으로 자연 복귀
+            }
+            else if (c == 'N' || c == 'n') {
+                printf("\n숨지 않았다… 조직원이 온다!\n");
+                Sleep(1000);
+                chooseMiniGame();
+                return;
+            }
+        }
+    }
+}
+
+void event2F3() { //오른쪽 방
+    int trigger = rand() % 100;  
+    if (trigger >= 98) return;
+    system("cls");
+    printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
+    printf(">> 2초 안에 선택하세요!\n");
+
+    DWORD start = GetTickCount();
+
+    while (1) {
+        if (GetTickCount() - start > 2000) {
+            printf("\n시간 초과! 조직원이 발견했다!\n");
+            Sleep(1000);
+            chooseMiniGame();
+            return;
+        }
+
+        if (_kbhit()) {
+            char c = _getch();
+
+            if (c == 'Y' || c == 'y') {
+                printf("\n숨는 데 성공했다...\n");
+                printf("\n[아무 키나 눌러 계속...]\n");
+                _getch();
+
+                system("cls");
+                fileprint("rightroom.txt");
+                return;  // rightroom 화면으로 복귀
+            }
+            else if (c == 'N' || c == 'n') {
+                printf("\n숨지 않았다… 조직원이 온다!\n");
+                Sleep(1000);
+                chooseMiniGame();
+                return;
+            }
+        }
+    }
+}
+
 void choice2F() { //2층에서 방 선택하기
     fileprint("floor2.txt");
 
     while (1) {
+         event2F1();
         int s = _getch();
         if (s == 'L' || s == 'l') {
             system("cls");
@@ -86,7 +204,7 @@ floor3();
 
 void leftroom2F() {//조직방
 
-
+    event2F2();
     system("cls");
     fileprint("leftroom.txt");
     scene(
@@ -118,6 +236,7 @@ void leftroom2F() {//조직방
 
 
 void rightroom2F() {//보안실
+    event2F3();
     system("cls");
     fileprint("password.txt");
     printf("\n");
