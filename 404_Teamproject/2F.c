@@ -255,26 +255,26 @@ void rightroom2F() {//보안실
             break;
         }
         if (s == 8) { // 비밀번호 지우기
-    if (i > 0) {
-        i--;
-        input[i] = '\0';
+            if(i>0){
+                i--;
+                input[i]='\0';
+                printf("\r비밀번호를 입력하세요 : ");
+                for(int k=0;k<i;k++)putchar('*');
 
-        printf("\r비밀번호를 입력하세요 : ");
-        for (int k = 0; k < i; k++) putchar('*');
+                putchar(' ');
+                printf("\r비밀번호를 입력하세요 : ");
+                for(int k=0;k<i;k++)putchar('*');
 
-        putchar(' ');
-        printf("\r비밀번호를 입력하세요 : ");
-        for (int k = 0; k < i; k++) putchar('*');
-
-        fflush(stdout);
-    }
-    continue;
-}
-if (s >= '0' && s <= '9' && i < 9) { //비밀번호 입력 시 *로 출력
-    putchar('*');
-    input[i++] = s;
-    fflush(stdout);
-}
+                fflush(stdout);
+            }
+            continue;
+        }
+        if(s>='0'&&s<='9'&&i<9){
+            putchar('*');
+            input[i++]=s;
+            fflush(stdout);
+        }
+   
     }
     int password = atoi(input);
     system("cls");
