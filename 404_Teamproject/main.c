@@ -9,7 +9,7 @@
 #include<stdio.h>
 #include<windows.h>
 #include<time.h>
-
+int alarmOff = 0;
 int main()
 {
 	srand((unsigned int)time(NULL));//미니게임을 위한 랜덤확률 초기화
