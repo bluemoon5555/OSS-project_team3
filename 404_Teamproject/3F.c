@@ -100,7 +100,7 @@ void floor3() {
             continue;   // 돌아오면 3층 화면 다시 그림
         }
         else if (key == 'd' || key == 'D') {
-            floor2();   // 2층 미구현 (돌아오면 다시 3층)
+            choice2F();   // 2층 미구현 (돌아오면 다시 3층)
             continue;
         }
         else if (key == 27) { // ESC: 프로그램 종료 또는 상위로 빠져나감
