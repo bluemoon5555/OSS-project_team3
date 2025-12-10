@@ -302,9 +302,13 @@ void rightroom2F() {//보안실
     while (1) {
         int s = _getch();
         if (s == '1') {
-            system("cls");
-            fileprint("warningsystem.txt");
-            //경보 해제 넣기
+             system("cls");
+             Guess_number();
+             system("cls");
+             printf("보안시스템 OFF");
+             Sleep(1500);
+             system("cls");
+             fileprint("rightroom.txt");
         }
         else if (s == 27)return;
     }
