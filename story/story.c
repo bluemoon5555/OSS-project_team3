@@ -4,6 +4,27 @@
 #include <stdlib.h>
 #include <conio.h>
 
+typedef struct {
+    int checkpoint;
+}SaveData;
+
+SaveData saveData = { 0 };
+
+void saveGame() {
+    FILE* fp = fopen("save.dat", "wb");
+    if (!fp) return;
+    fwrite(&saveData, sizeof(SaveData), 1, fp);
+    fclose(fp);
+}
+
+int loadSaveData() {
+    FILE* fp = fopen("save.dat", "rb");
+    if (!fp) return 0; // 저장 파일 없음
+    fread(&saveData, sizeof(SaveData), 1, fp);
+    fclose(fp);
+    return 1;
+}
+
 // --------------- 한 글자씩 출력하는 함수 ---------------
 void slowPrintChar(const char* text, int delay) {
     while (*text) {
@@ -81,23 +102,23 @@ int main() {
 // ---------------------- 메뉴 ----------------------
 void printMenu() {
     system("cls");
-fileprint("startmenu.txt");
+    fileprint("startmenu.txt");
 }
 
 
 // ---------------------- 게임 시작 ----------------------
 void startGame() {
-   fileprint("howtoplay.txt");
- int s = _getch();
- while (1) {
-     if (s == '\r') {
-         system("cls");break;
-     }
- }
-  fileprint("startgame1.txt");
-  Sleep(1000);
-  system("cls");
-   
+    fileprint("howtoplay.txt");
+    int s = _getch();
+    while (1) {
+        if (s == '\r') {
+            system("cls"); break;
+        }
+    }
+    fileprint("startgame1.txt");
+    Sleep(1000);
+    system("cls");
+
     scene(
         "(좁은 원룸, 책상 위에는 노트북과 이력서가 어지럽게 놓여 있다.)\n"
         "(올해로 29살인 최종훈은 00대학교 컴퓨터공학과를 졸업한 뒤 3년째 취업에 실패하고 있다.)\n"
@@ -112,7 +133,7 @@ void startGame() {
         "터무니 없이 파격적인 조건이네...  요즘같은 불경기에 정말 이런 조건으로\n"
         " 사람을 뽑는 회사가 있을까.. ? ?\n "
     );
-   
+
     scene(
         "(메일 스크롤을 계속해서 내린다.)\n"
         "무경력자 환영...탄력적 근무...임사 시 월급과 별도로 500만원 지급?!\n"
@@ -137,9 +158,9 @@ void startGame() {
         "(최종훈은 시야가 점점 흐려지며 의식을 잃게 되었다.)"
     );
 
-   
 
-   
+
+
     scene(
         "보스 : 잠에서 깬 모양이군.\n"
         "(날카로운 눈매의 중년 남성과 두 명의 거구가 방 안으로 들어온다)\n"
@@ -231,10 +252,21 @@ void startGame() {
 // ---------------------- LOAD ----------------------
 void loadGame() {
     system("cls");
-    slowPrintChar("LOAD 기능은 아직 준비중입니다.\n", 30);
-    slowPrintChar("추후 체크포인트 기능이 추가됩니다.\n", 30);
-    slowPrintChar("메뉴로 돌아갑니다...", 30);
-    Sleep(1500);
-    system("cls");
-}
 
+    if (loadSaveData()) {
+        slowPrintChar("저장된 데이터를 불러왔습니다.\n", 30);
+
+        if (saveData.checkpoint == 1)
+            slowPrintChar("📌 저장된 위치: 이야기 시작 이후 구간입니다.\n", 30);
+
+        slowPrintChar("\n곧 이어서 게임이 진행됩니다...\n", 30);
+        Sleep(1500);
+        system("cls");
+        // 🔥 나중에: 여기서 층 함수 호출하면 됨
+    }
+    else {
+        slowPrintChar("⚠ 저장 데이터가 없습니다.\n", 30);
+        slowPrintChar("새 게임을 시작해주세요.\n", 30);
+        Sleep(1200);
+    }
+}
