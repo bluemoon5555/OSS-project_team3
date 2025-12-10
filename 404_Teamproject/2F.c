@@ -306,6 +306,7 @@ void rightroom2F() {//보안실
              Guess_number();
              system("cls");
              printf("보안시스템 OFF");
+             alarmOff = 1;
              Sleep(1500);
              system("cls");
              fileprint("rightroom.txt");
