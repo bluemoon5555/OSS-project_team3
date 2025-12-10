@@ -8,7 +8,7 @@
 #include"1F.h"
 
 int keyhave = 0;//열쇠 소유 여부
-
+void event1F();
 //void slowPrintChar(const char* text, int delay) {
 //    while (*text) {
 //        // 키 눌렀는지 체크
@@ -50,6 +50,9 @@ int keyhave = 0;//열쇠 소유 여부
 //}
 
 void choice1F() { // 1층
+    if (!alarmOff) {
+    event1F();   // 보안 켜져 있을 때만 실행
+}
     while (1) {
         system("cls");
         fileprint("floor1.txt");
@@ -112,7 +115,45 @@ void happyending() { // 해피엔딩
     scene("--HAPPY END--");
 
 }
+void event1F() { //1층
+    if (alarmOff)return;
+    int trigger = rand() % 100;
+    if (trigger >= 98) return;
+    system("cls");
+    printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
+    printf(">> 2초 안에 선택하세요!\n");
 
+    DWORD start = GetTickCount();
+
+    while (1) {
+        if (GetTickCount() - start > 2000) {
+            printf("\n시간 초과! 조직원이 발견했다!\n");
+            Sleep(1000);
+            chooseMiniGame();
+            return;
+        }
+
+        if (_kbhit()) {
+            char c = _getch();
+
+            if (c == 'Y' || c == 'y') {
+                printf("\n숨는 데 성공했다...\n");
+                printf("\n[아무 키나 눌러 계속...]\n");
+                _getch();
+
+                system("cls");
+                fileprint("floor1.txt");
+                return;  //  1층화면으로 복귀
+            }
+            else if (c == 'N' || c == 'n') {
+                printf("\n숨지 않았다… 조직원이 온다!\n");
+                Sleep(1000);
+                chooseMiniGame();
+                return;
+            }
+        }
+    }
+}
 void keyroom() {
     fileprint("keyroom.txt");
     while (1) {
