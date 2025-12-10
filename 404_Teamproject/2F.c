@@ -279,7 +279,7 @@ void rightroom2F() {//보안실
     int password = atoi(input);
     system("cls");
     if (password != 2115) { //비밀번호 일치하는지 확인
-        printf("비밀번호 불일치!! 경보!!");
+        printf("비밀번호가 일치하지 않습니다.");
         Sleep(1500);
         return;
     }
