@@ -6,6 +6,7 @@
 #include "2F.h"
 #include "3F.h"
 #include "4F.h"
+#include "story.h"
 #include<stdio.h>
 #include<windows.h>
 #include<time.h>
