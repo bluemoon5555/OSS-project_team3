@@ -13,6 +13,10 @@ int alarmOff = 0;
 int main()
 {
 	srand((unsigned int)time(NULL));//미니게임을 위한 랜덤확률 초기화
+
+	//초반 스토리 menu
+	menu();
+
 	//1층
 	choice1F();
 
