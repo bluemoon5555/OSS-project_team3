@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "game3.h"
+#include "badending.h"
 
 #define WIDTH 30
 #define HEIGHT 20
@@ -123,7 +124,8 @@ void start_game() {
         printf("\n\n   Success!! \n\n");
     }
     else {
-        printf("\n\n   Fail.. \n\n");
+    badending();
+    return;
     }
 
     system("pause");
