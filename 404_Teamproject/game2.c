@@ -6,11 +6,11 @@
 #include"game2.h"
 #include "badending.h"
 
-void SetConsoleView()
-{
-    system("mode con:cols=100 lines=25");
-    system("title Sequence Memory Game");
-}
+// void SetConsoleView()
+// {
+//     system("mode con:cols=100 lines=25");
+//     system("title Sequence Memory Game");
+// }
 
 void number_Game() {
     SetConsoleView();
