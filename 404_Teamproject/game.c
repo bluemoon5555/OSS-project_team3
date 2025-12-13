@@ -3,6 +3,7 @@
 #include<conio.h>
 #include<time.h>
 #include "game.h"
+#include "badending.h"
 
 #define BOTTOM_Y 12
 #define TREE_BOTTOM_Y 20
@@ -198,7 +199,7 @@ void startGame() {
 		}
 
 		//
-		if (score < GOAL_SCORE) DrawGameOver(score);   //점수 충족하지 못했으면 재도전, 충족 시 다음 상황으로
+		if (score < GOAL_SCORE) { badending(); return; }   //점수 충족하지 못했으면 배드 엔딩으로 넘어가기
 		else break;
 	}
 }
