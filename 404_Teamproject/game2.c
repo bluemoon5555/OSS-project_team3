@@ -4,6 +4,7 @@
 #include <malloc.h>
 #include <Windows.h>
 #include"game2.h"
+#include "badending.h"
 
 void SetConsoleView()
 {
@@ -55,8 +56,10 @@ void number_Game() {
                 ok = 0;
         }
 
-        if (!ok)
-            printf("틀렸습니다.\n");
+        if (!ok){
+             badending();
+             return;
+        }
         else {
             printf("맞았습니다.\n");
             break;
