@@ -82,7 +82,6 @@ void event2F1() { //2층 복도
 
                 system("cls");
                 fileprint("floor2.txt");
-                slowPrintChar("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n", 18);
                 return;  // choice2F 화면으로 복귀
             }
             else if (c == 'N' || c == 'n') {
@@ -176,8 +175,7 @@ void event2F3() { //오른쪽 방
 void choice2F() { //2층에서 방 선택하기
     system("cls");
     fileprint("floor2.txt");
-    slowPrintChar("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n", 18);
-
+    
 
     while (1) {
          event2F1();
