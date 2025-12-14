@@ -5,28 +5,29 @@
 #include <conio.h>
 #include "story.h"
 #include"2F.h"
+#include"save.h"
 
-typedef struct {
-    int checkpoint;
-}SaveData;
+//typedef struct {
+//    int checkpoint;
+//}SaveData;
 
-SaveData saveData = { 0 };
+//SaveData saveData = { 0 };
 int choice;
 
-void saveGame() {
-    FILE* fp = fopen("save.dat", "wb");
-    if (!fp) return;
-    fwrite(&saveData, sizeof(SaveData), 1, fp);
-    fclose(fp);
-}
-
-int loadSaveData() {
-    FILE* fp = fopen("save.dat", "rb");
-    if (!fp) return 0; // 저장 파일 없음
-    fread(&saveData, sizeof(SaveData), 1, fp);
-    fclose(fp);
-    return 1;
-}
+//void saveGame() {
+//    FILE* fp = fopen("save.dat", "wb");
+//    if (!fp) return;
+//    fwrite(&saveData, sizeof(SaveData), 1, fp);
+//    fclose(fp);
+//}
+//
+//int loadSaveData() {
+//    FILE* fp = fopen("save.dat", "rb");
+//    if (!fp) return 0; // 저장 파일 없음
+//    fread(&saveData, sizeof(SaveData), 1, fp);
+//    fclose(fp);
+//    return 1;
+//}
 
 void printMenu();
 void startGame();
@@ -159,15 +160,15 @@ void loadGame() {
         slowPrintChar("저장된 데이터를 불러왔습니다.\n", 30);
 
         if (saveData.checkpoint == 1)
-            slowPrintChar("📌 저장된 위치: 이야기 시작 이후 구간입니다.\n", 30);
+            slowPrintChar(" 저장된 위치: 이야기 시작 이후 구간입니다.\n", 30);
 
         slowPrintChar("\n곧 이어서 게임이 진행됩니다...\n", 30);
         Sleep(1500);
         system("cls");
-        // 🔥 나중에: 여기서 층 함수 호출하면 됨
+        resumeGame();
     }
     else {
-        slowPrintChar("⚠ 저장 데이터가 없습니다.\n", 30);
+        slowPrintChar(" 저장 데이터가 없습니다.\n", 30);
         slowPrintChar("새 게임을 시작해주세요.\n", 30);
         Sleep(1200);
     }
