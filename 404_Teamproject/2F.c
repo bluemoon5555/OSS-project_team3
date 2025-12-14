@@ -194,6 +194,14 @@ void choice2F() { //2층에서 방 선택하기
             system("cls");
             fileprint("floor2.txt");
         }
+
+        else if (s == 'i' || s == 'I') {
+            system("cls");
+            showInventory();
+            system("cls");
+            fileprint("floor2.txt");
+        }
+
         else if (s == 'R' || s == 'r') {
             system("cls");
             rightroom2F();

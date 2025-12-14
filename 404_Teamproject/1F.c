@@ -70,6 +70,14 @@ void choice1F() { // 1층
             system("cls");
             keyroom();
         }
+
+        else if (s == 'i' || s == 'I') {
+            system("cls");
+            showInventory();
+            system("cls");
+            fileprint("floor1.txt");
+        }
+
         else if (s == 'G' || s == 'g') {
             system("cls");
             door();
@@ -77,6 +85,11 @@ void choice1F() { // 1층
         else if (s == 'U' || s == 'u') {
             system("cls");
             choice2F();
+        }
+        else if (s == 27) {
+            system("cls");
+            menu();
+            break;
         }
         else continue;
     }
