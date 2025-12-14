@@ -12,7 +12,7 @@
 
 
 
-int keyhave = 0;//열쇠 소유 여부
+
 void event1F();
 //void slowPrintChar(const char* text, int delay) {
 //    while (*text) {
@@ -101,20 +101,20 @@ void door() {  //1층 현관문
     while (1) {
         int s = _getch();
 
-        if (s == '1') {
-            if (keyhave) {
-                system("cls");
-                happyending();
-            }
-            else {
-                printf("\n열쇠를 먼저 획득하세요.\n");
-            }
+        if (hasItem("열쇠")) {
+            happyending();
         }
-        else if (s == 27) return;
+        else {
+            slowPrintChar("\n열쇠가 필요하다.\n", 20);
+        }
+
+        
+        if (s == 27) return;
     }
 }
 
 void happyending() { // 해피엔딩
+    system("cls");
     scene("최종훈은 건물로부터 탈출하는 데 성공했다.");
     system("cls");
     fileprint("happyending1.txt");
@@ -198,18 +198,17 @@ void keyroom() {
         int s = _getch();
 
         if (s == '1') {       // 열쇠 얻기
-            if (!keyhave) {
-                keyhave = 1;
-                printf("\n열쇠 획득!\n");
-
+            if (!hasItem("열쇠")) {
+                addItem("열쇠");
+                slowPrintChar("열쇠를 획득했습니다.\n", 20);
             }
             else {
-                printf("\n이미 소유한 아이템\n");
-
+                slowPrintChar("이미 소유한 아이템입니다.\n", 20);
             }
             Sleep(1000);
             system("cls");
             fileprint("keyroom.txt");
+
         }
         else if (s == 27) return;
     }
