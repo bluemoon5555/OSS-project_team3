@@ -8,6 +8,11 @@
 #include"2F.h"
 #include"1F.h"
 #define MAX_ITEMS 10
+#include "keys.h"
+#include "save.h"
+#include"story.h"
+
+
 //char inventory[MAX_ITEMS][50];
 //int itemCount = 0;
 
@@ -166,29 +171,29 @@ void room3() {
             showAsciiArtFull("room3.txt");
         }
         else if (key == 'L' || key == 'l') {   // 밧줄로 1층 이동
-    system("cls");
+            system("cls");
 
-    if (hasItem("밧줄")) {
-        slowPrintChar("밧줄을 이용해 아래층으로 내려갑니다...\n", 20);
-        Sleep(400);
+            if (hasItem("밧줄")) {
+                slowPrintChar("밧줄을 이용해 아래층으로 내려갑니다...\n", 20);
+                Sleep(400);
 
-        printf("\n[Enter 키를 누르면 이동합니다]");
-        while (_getch() != '\r');
+                printf("\n[Enter 키를 누르면 이동합니다]");
+                while (_getch() != '\r');
 
-        system("cls");
-        choice1F();   // ⭐ 1층 함수 바로 호출
-        return;       // ⭐ room3() 완전히 종료
-    }
-    else {
-        slowPrintChar("사용할 수 없습니다.\n", 20);
+                system("cls");
+                choice1F();   // ⭐ 1층 함수 바로 호출
+                return;       // ⭐ room3() 완전히 종료
+            }
+            else {
+                slowPrintChar("사용할 수 없습니다.\n", 20);
 
-        printf("\n[Enter 키를 누르면 돌아갑니다]");
-        while (_getch() != '\r');
+                printf("\n[Enter 키를 누르면 돌아갑니다]");
+                while (_getch() != '\r');
 
-        system("cls");
-        showAsciiArtFull("room3.txt");
-    }
-}
+                system("cls");
+                showAsciiArtFull("room3.txt");
+            }
+        }
 
         else if (key == 27) {
             break;
@@ -212,12 +217,13 @@ void room3_plus() {
                 slowPrintChar("망치를 획득했습니다.\n", 20);
                 Sleep(1500);
                 system("cls");
-                fileprintf("room3 plus.txt");
-            } else {
+                fileprint("room3 plus.txt");
+            }
+            else {
                 slowPrintChar("이미 획득한 아이템입니다.\n", 20);
                 Sleep(1500);
                 system("cls");
-                fileprintf("room3 plus.txt");
+                fileprint("room3 plus.txt");
             }
         }
         else if (key == '2') {
@@ -227,12 +233,13 @@ void room3_plus() {
                 slowPrintChar("담요를 획득했습니다.\n", 20);
                 Sleep(1500);
                 system("cls");
-                fileprintf("room3 plus.txt");
-            } else {
+                fileprint("room3 plus.txt");
+            }
+            else {
                 slowPrintChar("이미 획득한 아이템입니다.\n", 20);
                 Sleep(1500);
                 system("cls");
-                fileprintf("room3 plus.txt");
+                fileprint("room3 plus.txt");
             }
         }
         else if (key == '3') {
@@ -242,12 +249,13 @@ void room3_plus() {
                 slowPrintChar("밧줄을 획득했습니다.\n", 20);
                 Sleep(1500);
                 system("cls");
-                fileprintf("room3 plus.txt");
-            } else {
+                fileprint("room3 plus.txt");
+            }
+            else {
                 slowPrintChar("이미 획득한 아이템입니다.\n", 20);
                 Sleep(1500);
                 system("cls");
-                fileprintf("room3 plus.txt");
+                fileprint("room3 plus.txt");
             }
         }
         else if (key == 'i' || key == 'I') {
@@ -266,6 +274,8 @@ void room3_plus() {
 
 
 void corridor() {
+    saveData.checkpoint = 4;
+        saveGame();
     system("cls");
     showAsciiArtFull("room2.txt");
 
@@ -308,10 +318,21 @@ void corridor() {
 
         else if (key == 'D' || key == 'd') {
             system("cls");
-            slowPrintChar("3층은 아직 구현되지 않았습니다.\n", 20);
-            printf("\n[Enter 키를 누르면 종료합니다]\n");
+            slowPrintChar("아래층으로 내려갑니다...\n", 20);
+            printf("\n[Enter 키를 누르세요]");
             while (_getch() != '\r');
+
+            system("cls");
+            floor3();   // ⭐ 바로 3층 호출
+            system("cls");
+            showAsciiArtFull("room2.txt"); // 복귀 시 4층 복도 다시 그림
+        }
+
+        else if (key == 27) {
+            system("cls");
+            menu();
             break;
         }
+
     }
 }

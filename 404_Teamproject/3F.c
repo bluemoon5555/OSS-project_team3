@@ -8,6 +8,11 @@
 #include"2F.h"
 #include"1F.h"
 #define MAX_ITEMS 10
+#include "keys.h"
+#include "save.h"
+#include"story.h"
+
+
 
 char inventory[MAX_ITEMS][50];
 int itemCount = 0;
@@ -85,11 +90,14 @@ void showAsciiArtFull(const char* filename) {
     - 서브룸에서 돌아오면 화면이 갱신되어 항상 3층 복도로 복귀된 것처럼 보임 */
 void floor3() {
     while (1) {
+        saveData.checkpoint = 3;
+        saveGame();
         system("cls");
         showAsciiArtFull("31.txt");
         slowPrintChar("\n[L: 왼쪽(행정실) | R: 오른쪽(빈 방) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n", 18);
 
         int key = _getch();
+
 
         if (key == 'l' || key == 'L') {
             floor3_left();
@@ -110,6 +118,8 @@ void floor3() {
             continue;     // 돌아오면 다시 3층 화면
         }
         else if (key == 27) {
+            system("cls");
+            menu();
             break;
         }
     }
@@ -238,7 +248,7 @@ void floor3_right() {
     system("cls");
     slowPrintChar("=== 3층 - 빈 피해자의 방 ===\n\n", 28);
     showAsciiArtFull("33.txt");
-    
+
 
     while (1) {
         int key = _getch();
@@ -247,7 +257,7 @@ void floor3_right() {
             system("cls");
             slowPrintChar("=== 3층 - 빈 피해자의 방 ===\n\n", 28);
             showAsciiArtFull("33.txt");
-            
+
         }
         else if (key == 'R' || key == 'r') {
             system("cls");
@@ -258,14 +268,14 @@ void floor3_right() {
             system("cls");
             slowPrintChar("=== 3층 - 빈 피해자의 방 ===\n\n", 28);
             showAsciiArtFull("33.txt");
-            
+
         }
         else if (key == 'i' || key == 'I') {
             showInventory();
             system("cls");
             slowPrintChar("=== 3층 - 빈 피해자의 방 ===\n\n", 28);
             showAsciiArtFull("33.txt");
-           
+
         }
         else if (key == 27) { // ESC
             break; // 돌아오면 floor3 루프가 화면을 다시 그림

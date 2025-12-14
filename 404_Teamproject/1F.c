@@ -7,6 +7,10 @@
 #include"2F.h"
 #include"1F.h"
 #include"story.h"
+#include "keys.h"
+#include "save.h"
+
+
 
 int keyhave = 0;//열쇠 소유 여부
 void event1F();
@@ -51,14 +55,17 @@ void event1F();
 //}
 
 void choice1F() { // 1층
+    saveData.checkpoint = 1;
+    saveGame();
     if (!alarmOff) {
-    event1F();   // 보안 켜져 있을 때만 실행
-}
+        event1F();   // 보안 켜져 있을 때만 실행
+    }
     while (1) {
         system("cls");
         fileprint("floor1.txt");
 
         int s = _getch();
+
         if (s == 'L' || s == 'l') {
             system("cls");
             keyroom();
@@ -67,7 +74,7 @@ void choice1F() { // 1층
             system("cls");
             door();
         }
-        else if(s=='U'||s=='u'){
+        else if (s == 'U' || s == 'u') {
             system("cls");
             choice2F();
         }

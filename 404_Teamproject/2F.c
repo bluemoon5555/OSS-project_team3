@@ -6,6 +6,11 @@
 #include"3F.h"
 #include"2F.h"
 #include"1F.h"
+#include "keys.h"
+#include "save.h"
+#include "story.h"
+
+
 void slowPrintChar(const char* text, int delay) {
     while (*text) {
         // 키 눌렀는지 체크
@@ -56,7 +61,7 @@ void chooseMiniGame() {//미니게임 3개 중 랜덤출제
 }
 
 void event2F1() { //2층 복도
-    int trigger = rand() % 100;  
+    int trigger = rand() % 100;
     if (trigger >= 98) return;
     system("cls");
     printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
@@ -82,7 +87,6 @@ void event2F1() { //2층 복도
 
                 system("cls");
                 fileprint("floor2.txt");
-                 slowPrintChar("[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]",20);
                 return;  // choice2F 화면으로 복귀
             }
             else if (c == 'N' || c == 'n') {
@@ -96,7 +100,7 @@ void event2F1() { //2층 복도
 }
 
 void event2F2() {//왼쪽 방
-    int trigger = rand() % 100;  
+    int trigger = rand() % 100;
     if (trigger >= 98) return;
     system("cls");
     printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
@@ -135,7 +139,7 @@ void event2F2() {//왼쪽 방
 }
 
 void event2F3() { //오른쪽 방
-    int trigger = rand() % 100;  
+    int trigger = rand() % 100;
     if (trigger >= 98) return;
     system("cls");
     printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
@@ -174,13 +178,16 @@ void event2F3() { //오른쪽 방
 }
 
 void choice2F() { //2층에서 방 선택하기
+    saveData.checkpoint = 2;
+    saveGame();
     system("cls");
     fileprint("floor2.txt");
-    slowPrintChar("[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]",20);
+
 
     while (1) {
-         event2F1();
+        event2F1();
         int s = _getch();
+        
         if (s == 'L' || s == 'l') {
             system("cls");
             leftroom2F();
@@ -193,11 +200,11 @@ void choice2F() { //2층에서 방 선택하기
             system("cls");
             fileprint("floor2.txt");
         }
-        else if(s=='U'||s=='u'){
+        else if (s == 'U' || s == 'u') {
             system("cls");
-floor3();
+            floor3();
         }
-        else if(s=='D'||s=='d'){
+        else if (s == 'D' || s == 'd') {
             system("cls");
             slowPrintChar("아래층으로 내려갑니다...\n", 20);
             printf("\n[Enter 키를 누르세요]");
@@ -205,6 +212,11 @@ floor3();
 
             system("cls");
             choice1F();
+        }
+        else if (s == 27) {
+            system("cls");
+            menu();
+            break;
         }
         else continue;
     }
@@ -253,7 +265,7 @@ void rightroom2F() {//보안실
     printf("비밀번호를 입력하세요 : ");
     while (1) {
         int s = _getch();
-         if (s == 27) {  
+        if (s == 27) {
             system("cls");
             choice2F();     // 2층 선택 화면으로 복귀
             return;
@@ -263,26 +275,26 @@ void rightroom2F() {//보안실
             break;
         }
         if (s == 8) { // 비밀번호 지우기
-            if(i>0){
+            if (i > 0) {
                 i--;
-                input[i]='\0';
+                input[i] = '\0';
                 printf("\r비밀번호를 입력하세요 : ");
-                for(int k=0;k<i;k++)putchar('*');
+                for (int k = 0;k < i;k++)putchar('*');
 
                 putchar(' ');
                 printf("\r비밀번호를 입력하세요 : ");
-                for(int k=0;k<i;k++)putchar('*');
+                for (int k = 0;k < i;k++)putchar('*');
 
                 fflush(stdout);
             }
             continue;
         }
-        if(s>='0'&&s<='9'&&i<9){
+        if (s >= '0' && s <= '9' && i < 9) {
             putchar('*');
-            input[i++]=s;
+            input[i++] = s;
             fflush(stdout);
         }
-   
+
     }
     int password = atoi(input);
     system("cls");
@@ -310,14 +322,14 @@ void rightroom2F() {//보안실
     while (1) {
         int s = _getch();
         if (s == '1') {
-             system("cls");
-             Guess_number();
-             system("cls");
-             printf("보안시스템 OFF");
-             alarmOff = 1;
-             Sleep(1500);
-             system("cls");
-             fileprint("rightroom.txt");
+            system("cls");
+            Guess_number();
+            system("cls");
+            printf("보안시스템 OFF");
+            alarmOff = 1;
+            Sleep(1500);
+            system("cls");
+            fileprint("rightroom.txt");
         }
         else if (s == 27)return;
     }
