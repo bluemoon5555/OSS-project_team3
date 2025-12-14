@@ -6,6 +6,7 @@
 #include"3F.h"
 #include"2F.h"
 #include"1F.h"
+#include"story.h"
 
 int keyhave = 0;//열쇠 소유 여부
 void event1F();
@@ -113,6 +114,8 @@ void happyending() { // 해피엔딩
     Sleep(1500);
     system("cls");
     scene("--HAPPY END--");
+    system("cls");
+    menu();
 
 }
 void event1F() { //1층
