@@ -165,33 +165,32 @@ void room3() {
             system("cls");
             showAsciiArtFull("room3.txt");
         }
-        else if (key == 'L' || key == 'l') {    // ★ 히든 기능 추가
-            system("cls");
+        else if (key == 'L' || key == 'l') {   // 밧줄로 1층 이동
+    system("cls");
 
-            if (hasItem("밧줄")) {   // ‼ 밧줄 체크
-                slowPrintChar("밧줄을 이용해 아래층으로 내려갑니다...\n", 20);
-                Sleep(400);
+    if (hasItem("밧줄")) {
+        slowPrintChar("밧줄을 이용해 아래층으로 내려갑니다...\n", 20);
+        Sleep(400);
 
-                slowPrintChar("하지만 1층은 아직 구현 중입니다.\n", 20);
-                slowPrintChar("곧 업데이트될 예정입니다.\n", 20);
+        printf("\n[Enter 키를 누르면 이동합니다]");
+        while (_getch() != '\r');
 
-                printf("\n[Enter 키를 누르면 돌아갑니다]");
-                while (_getch() != '\r');
+        system("cls");
+        choice1F();   // ⭐ 1층 함수 바로 호출
+        return;       // ⭐ room3() 완전히 종료
+    }
+    else {
+        slowPrintChar("사용할 수 없습니다.\n", 20);
+        slowPrintChar("밧줄이 필요합니다.\n", 20);
 
-                system("cls");
-                showAsciiArtFull("room3.txt");
-            }
-            else {
-                slowPrintChar("사용할 수 없습니다.\n", 20);
-                slowPrintChar("다음에 다시 시도해주세요.\n", 20);
+        printf("\n[Enter 키를 누르면 돌아갑니다]");
+        while (_getch() != '\r');
 
-                printf("\n[Enter 키를 누르면 돌아갑니다]");
-                while (_getch() != '\r');
+        system("cls");
+        showAsciiArtFull("room3.txt");
+    }
+}
 
-                system("cls");
-                showAsciiArtFull("room3.txt");
-            }
-        }
         else if (key == 27) {
             break;
         }
