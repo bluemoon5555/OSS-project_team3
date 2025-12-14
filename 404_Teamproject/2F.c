@@ -147,7 +147,7 @@ void event2F2() { // 조직원 방
                     printf("\n[아무 키나 누르세요]");
                     _getch();
                     system("cls");
-                    fileprint("floor2.txt");
+                    fileprint("leftroom.txt");
                     return;
                 }
                 else {
@@ -202,7 +202,8 @@ void event2F3() { // 보안실
                     printf("\n[아무 키나 누르세요]");
                     _getch();
                     system("cls");
-                    fileprint("floor2.txt");
+                    fileprint("rightroom.txt");
+
                     return;
                 }
                 else {
@@ -230,7 +231,7 @@ void choice2F() { //2층에서 방 선택하기
     saveGame();
     system("cls");
     fileprint("floor2.txt");
-
+    slowPrintChar("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n", 30);
 
     while (1) {
         if (!alarmOff) {
