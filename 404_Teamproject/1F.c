@@ -63,6 +63,7 @@ void choice1F() { // 1층
     while (1) {
         system("cls");
         fileprint("floor1.txt");
+        slowPrintChar("\n[L: 왼쪽(열쇠방) | U: 위층 | G: 현관문 | I: 인벤토리 | ESC: 종료]\n", 30);
 
         int s = _getch();
 
@@ -83,6 +84,10 @@ void choice1F() { // 1층
             door();
         }
         else if (s == 'U' || s == 'u') {
+            system("cls");
+            slowPrintChar("위층으로 올라갑니다...\n", 20);
+            printf("\n[Enter 키를 누르세요]");
+            while (_getch() != '\r');
             system("cls");
             choice2F();
         }
@@ -141,7 +146,7 @@ void happyending() { // 해피엔딩
 void event1F() { //1층
     if (alarmOff)return;
     int trigger = rand() % 100;
-    if (trigger >= 98) return;
+    if (trigger >= 50) return;
 
     system("cls");
     printf("조직원의 발소리가 들린다...\n");

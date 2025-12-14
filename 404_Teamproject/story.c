@@ -68,6 +68,8 @@ void printMenu() {
 // ---------------------- 게임 시작 ----------------------
 void startStory() {
     fileprint("howtoplay.txt");
+    slowPrintChar("넘어가려면 [Enter]를 입력하세요",18);
+
     int s = _getch();
     while (1) {
         if (s == '\r') {
