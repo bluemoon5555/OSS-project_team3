@@ -198,6 +198,11 @@ floor3();
         }
         else if(s=='D'||s=='d'){
             system("cls");
+            slowPrintChar("아래층으로 내려갑니다...\n", 20);
+            printf("\n[Enter 키를 누르세요]");
+            while (_getch() != '\r');
+
+            system("cls");
             choice1F();
         }
         else continue;
