@@ -18,20 +18,18 @@ char inventory[MAX_ITEMS][50];
 int itemCount = 0;
 
 void addItem(const char* item) {
-    for (int i = 0; i < itemCount; i++) {
-        if (strcmp(inventory[i], item) == 0) {
-            return;
-        }
-    }
-    if (itemCount < MAX_ITEMS) {
-        strcpy(inventory[itemCount], item);
-        itemCount++;
-    }
+    if (saveData.itemCount >= MAX_ITEMS) return;
+
+    strcpy(saveData.inventory[saveData.itemCount], item);
+    saveData.itemCount++;
+
+    saveGame(); // 아이템 얻자마자 저장 (선택)
 }
 
 int hasItem(const char* item) {
-    for (int i = 0; i < itemCount; i++) {
-        if (strcmp(inventory[i], item) == 0) return 1;
+    for (int i = 0; i < saveData.itemCount; i++) {
+        if (strcmp(saveData.inventory[i], item) == 0)
+            return 1;
     }
     return 0;
 }
@@ -39,17 +37,20 @@ int hasItem(const char* item) {
 void showInventory() {
     system("cls");
     printf("==== 인벤토리 ====\n\n");
-    if (itemCount == 0) {
+
+    if (saveData.itemCount == 0) {
         printf("인벤토리가 비어 있습니다.\n");
     }
     else {
-        for (int i = 0; i < itemCount; i++) {
-            printf("%d) %s\n", i + 1, inventory[i]);
+        for (int i = 0; i < saveData.itemCount; i++) {
+            printf("%d) %s\n", i + 1, saveData.inventory[i]);
         }
     }
+
     printf("\n[ESC 키를 누르면 돌아갑니다]");
-    while (_getch() != 27); // ESC
+    while (_getch() != 27);
 }
+
 
 //void slowPrintChar(const char* text, int delay) {
 //    while (*text) {
@@ -105,6 +106,16 @@ void floor3() {
         }
         else if (key == 'r' || key == 'R') {
             floor3_right();
+            continue;
+        }
+        else if (key == 'u' || key == 'U') {
+            system("cls");
+            slowPrintChar("위층으로 올라갑니다...\n", 20);
+            printf("\n[Enter 키를 누르세요]");
+            while (_getch() != '\r');
+
+            system("cls");
+            corridor();
             continue;
         }
         else if (key == 'd' || key == 'D') {
