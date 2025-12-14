@@ -232,7 +232,7 @@ void floor3_right() {
     system("cls");
     slowPrintChar("=== 3층 - 빈 피해자의 방 ===\n\n", 28);
     showAsciiArtFull("33.txt");
-    slowPrintChar("\n[L: 액자] [R: 기록 확인] [I: 인벤토리] [ESC: 복도]\n", 28);
+    
 
     while (1) {
         int key = _getch();
@@ -241,7 +241,7 @@ void floor3_right() {
             system("cls");
             slowPrintChar("=== 3층 - 빈 피해자의 방 ===\n\n", 28);
             showAsciiArtFull("33.txt");
-            slowPrintChar("\n[L: 액자] [R: 기록 확인] [I: 인벤토리] [ESC: 복도]\n", 28);
+            
         }
         else if (key == 'R' || key == 'r') {
             system("cls");
@@ -252,14 +252,14 @@ void floor3_right() {
             system("cls");
             slowPrintChar("=== 3층 - 빈 피해자의 방 ===\n\n", 28);
             showAsciiArtFull("33.txt");
-            slowPrintChar("\n[L: 액자] [R: 기록 확인] [I: 인벤토리] [ESC: 복도]\n", 28);
+            
         }
         else if (key == 'i' || key == 'I') {
             showInventory();
             system("cls");
             slowPrintChar("=== 3층 - 빈 피해자의 방 ===\n\n", 28);
             showAsciiArtFull("33.txt");
-            slowPrintChar("\n[L: 액자] [R: 기록 확인] [I: 인벤토리] [ESC: 복도]\n", 28);
+           
         }
         else if (key == 27) { // ESC
             break; // 돌아오면 floor3 루프가 화면을 다시 그림
