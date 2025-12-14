@@ -181,7 +181,6 @@ void room3() {
     }
     else {
         slowPrintChar("사용할 수 없습니다.\n", 20);
-        slowPrintChar("밧줄이 필요합니다.\n", 20);
 
         printf("\n[Enter 키를 누르면 돌아갑니다]");
         while (_getch() != '\r');
@@ -207,16 +206,49 @@ void room3_plus() {
         int key = _getch();
 
         if (key == '1') {
-            addItem("망치");
-            Sleep(200);
+            printf("\n");
+            if (!hasItem("망치")) {
+                addItem("망치");
+                slowPrintChar("망치를 획득했습니다.\n", 20);
+                Sleep(1500);
+                system("cls");
+                fileprintf("room3 plus.txt");
+            } else {
+                slowPrintChar("이미 획득한 아이템입니다.\n", 20);
+                Sleep(1500);
+                system("cls");
+                fileprintf("room3 plus.txt");
+            }
         }
         else if (key == '2') {
-            addItem("담요");
-            Sleep(200);
+            printf("\n");
+            if (!hasItem("담요")) {
+                addItem("담요");
+                slowPrintChar("담요를 획득했습니다.\n", 20);
+                Sleep(1500);
+                system("cls");
+                fileprintf("room3 plus.txt");
+            } else {
+                slowPrintChar("이미 획득한 아이템입니다.\n", 20);
+                Sleep(1500);
+                system("cls");
+                fileprintf("room3 plus.txt");
+            }
         }
         else if (key == '3') {
-            addItem("밧줄");
-            Sleep(200);
+            printf("\n");
+            if (!hasItem("밧줄")) {
+                addItem("밧줄");
+                slowPrintChar("밧줄을 획득했습니다.\n", 20);
+                Sleep(1500);
+                system("cls");
+                fileprintf("room3 plus.txt");
+            } else {
+                slowPrintChar("이미 획득한 아이템입니다.\n", 20);
+                Sleep(1500);
+                system("cls");
+                fileprintf("room3 plus.txt");
+            }
         }
         else if (key == 'i' || key == 'I') {
             showInventory();
@@ -228,6 +260,8 @@ void room3_plus() {
         }
     }
 }
+
+
 
 
 
