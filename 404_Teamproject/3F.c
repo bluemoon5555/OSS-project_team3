@@ -93,22 +93,28 @@ void floor3() {
 
         if (key == 'l' || key == 'L') {
             floor3_left();
-            continue;   // 돌아오면 3층 화면 다시 그림
+            continue;
         }
         else if (key == 'r' || key == 'R') {
             floor3_right();
-            continue;   // 돌아오면 3층 화면 다시 그림
-        }
-        else if (key == 'd' || key == 'D') {
-            choice2F();   // 2층 미구현 (돌아오면 다시 3층)
             continue;
         }
-        else if (key == 27) { // ESC: 프로그램 종료 또는 상위로 빠져나감
+        else if (key == 'd' || key == 'D') {
+            system("cls");
+            slowPrintChar("아래층으로 내려갑니다...\n", 20);
+            printf("\n[Enter 키를 누르세요]");
+            while (_getch() != '\r');
+
+            system("cls");
+            choice2F();   // ⭐ 2층 호출
+            continue;     // 돌아오면 다시 3층 화면
+        }
+        else if (key == 27) {
             break;
         }
-        // 기타키는 무시되고 루프 반복 → 화면 재표시
     }
 }
+
 
 /* ========== 이하 기존 함수들 (변경 없음) ========== */
 
