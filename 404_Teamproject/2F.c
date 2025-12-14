@@ -62,7 +62,7 @@ void chooseMiniGame() {//미니게임 3개 중 랜덤출제
 
 void event2F1() { // 2층 복도
     int trigger = rand() % 100;
-    if (trigger >= 98) return;
+    if (trigger >= 30) return;
 
     system("cls");
     printf("조직원의 발소리가 들린다...\n");
@@ -117,7 +117,7 @@ void event2F1() { // 2층 복도
 
 void event2F2() { // 조직원 방
     int trigger = rand() % 100;
-    if (trigger >= 98) return;
+    if (trigger >= 30) return;
 
     system("cls");
     printf("조직원의 발소리가 들린다...\n");
@@ -172,7 +172,7 @@ void event2F2() { // 조직원 방
 
 void event2F3() { // 보안실
     int trigger = rand() % 100;
-    if (trigger >= 98) return;
+    if (trigger >= 30) return;
 
     system("cls");
     printf("조직원의 발소리가 들린다...\n");
@@ -260,6 +260,10 @@ void choice2F() { //2층에서 방 선택하기
             fileprint("floor2.txt");
         }
         else if (s == 'U' || s == 'u') {
+            system("cls");
+            slowPrintChar("위층으로 올라갑니다...\n", 20);
+            printf("\n[Enter 키를 누르세요]");
+            while (_getch() != '\r');
             system("cls");
             floor3();
         }
