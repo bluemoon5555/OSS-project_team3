@@ -60,12 +60,15 @@ void chooseMiniGame() {//미니게임 3개 중 랜덤출제
     }
 }
 
-void event2F1() { //2층 복도
+void event2F1() { // 2층 복도
     int trigger = rand() % 100;
     if (trigger >= 98) return;
+
     system("cls");
-    printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
-    printf(">> 2초 안에 선택하세요!\n");
+    printf("조직원의 발소리가 들린다...\n");
+    printf("어떻게 할까?\n\n");
+    printf("1. 담요를 이용해 몸을 숨긴다.\n");
+    printf("2. 조직원과 맞서 싸운다.\n");
 
     DWORD start = GetTickCount();
 
@@ -80,17 +83,29 @@ void event2F1() { //2층 복도
         if (_kbhit()) {
             char c = _getch();
 
-            if (c == 'Y' || c == 'y') {
-                printf("\n숨는 데 성공했다...\n");
-                printf("\n[아무 키나 눌러 계속...]\n");
-                _getch();
-
-                system("cls");
-                fileprint("floor2.txt");
-                return;  // choice2F 화면으로 복귀
+            // 1번 선택
+            if (c == '1') {
+                if (hasItem("담요")) {
+                    printf("\n담요를 덮고 몸을 숨겼다...\n");
+                    Sleep(1000);
+                    printf("조직원이 그냥 지나갔다.\n");
+                    printf("\n[아무 키나 누르세요]");
+                    _getch();
+                    system("cls");
+                    fileprint("floor2.txt");
+                    return;
+                }
+                else {
+                    printf("\n담요가 없다!\n");
+                    Sleep(800);
+                    chooseMiniGame();
+                    return;
+                }
             }
-            else if (c == 'N' || c == 'n') {
-                printf("\n숨지 않았다… 조직원이 온다!\n");
+
+            // 2번 선택
+            else if (c == '2') {
+                printf("\n조직원과 마주쳤다!\n");
                 Sleep(1000);
                 chooseMiniGame();
                 return;
@@ -99,12 +114,16 @@ void event2F1() { //2층 복도
     }
 }
 
-void event2F2() {//왼쪽 방
+
+void event2F2() { // 조직원 방
     int trigger = rand() % 100;
     if (trigger >= 98) return;
+
     system("cls");
-    printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
-    printf(">> 2초 안에 선택하세요!\n");
+    printf("조직원의 발소리가 들린다...\n");
+    printf("어떻게 할까?\n\n");
+    printf("1. 담요를 이용해 몸을 숨긴다.\n");
+    printf("2. 조직원과 맞서 싸운다.\n");
 
     DWORD start = GetTickCount();
 
@@ -119,17 +138,29 @@ void event2F2() {//왼쪽 방
         if (_kbhit()) {
             char c = _getch();
 
-            if (c == 'Y' || c == 'y') {
-                printf("\n숨는 데 성공했다...\n");
-                printf("\n아무 키나 눌러 계속...\n");
-                _getch();
-
-                system("cls");
-                fileprint("leftroom.txt");
-                return;  // leftroom 화면으로 자연 복귀
+            //  1번 선택
+            if (c == '1') {
+                if (hasItem("담요")) {
+                    printf("\n담요를 덮고 몸을 숨겼다...\n");
+                    Sleep(1000);
+                    printf("조직원이 그냥 지나갔다.\n");
+                    printf("\n[아무 키나 누르세요]");
+                    _getch();
+                    system("cls");
+                    fileprint("floor2.txt");
+                    return;
+                }
+                else {
+                    printf("\n담요가 없다!\n");
+                    Sleep(800);
+                    chooseMiniGame();
+                    return;
+                }
             }
-            else if (c == 'N' || c == 'n') {
-                printf("\n숨지 않았다… 조직원이 온다!\n");
+
+            //  2번 선택
+            else if (c == '2') {
+                printf("\n조직원과 마주쳤다!\n");
                 Sleep(1000);
                 chooseMiniGame();
                 return;
@@ -138,12 +169,16 @@ void event2F2() {//왼쪽 방
     }
 }
 
-void event2F3() { //오른쪽 방
+
+void event2F3() { // 보안실
     int trigger = rand() % 100;
     if (trigger >= 98) return;
+
     system("cls");
-    printf("조직원의 발소리가 들린다...\n숨을까? \n(  YES  |  NO  )\n");
-    printf(">> 2초 안에 선택하세요!\n");
+    printf("조직원의 발소리가 들린다...\n");
+    printf("어떻게 할까?\n\n");
+    printf("1. 담요를 이용해 몸을 숨긴다.\n");
+    printf("2. 조직원과 맞서 싸운다.\n");
 
     DWORD start = GetTickCount();
 
@@ -158,17 +193,29 @@ void event2F3() { //오른쪽 방
         if (_kbhit()) {
             char c = _getch();
 
-            if (c == 'Y' || c == 'y') {
-                printf("\n숨는 데 성공했다...\n");
-                printf("\n[아무 키나 눌러 계속...]\n");
-                _getch();
-
-                system("cls");
-                fileprint("rightroom.txt");
-                return;  // rightroom 화면으로 복귀
+            //  1번 선택
+            if (c == '1') {
+                if (hasItem("담요")) {
+                    printf("\n담요를 덮고 몸을 숨겼다...\n");
+                    Sleep(1000);
+                    printf("조직원이 그냥 지나갔다.\n");
+                    printf("\n[아무 키나 누르세요]");
+                    _getch();
+                    system("cls");
+                    fileprint("floor2.txt");
+                    return;
+                }
+                else {
+                    printf("\n담요가 없다!\n");
+                    Sleep(800);
+                    chooseMiniGame();
+                    return;
+                }
             }
-            else if (c == 'N' || c == 'n') {
-                printf("\n숨지 않았다… 조직원이 온다!\n");
+
+            //  2번 선택
+            else if (c == '2') {
+                printf("\n조직원과 마주쳤다!\n");
                 Sleep(1000);
                 chooseMiniGame();
                 return;
@@ -176,6 +223,7 @@ void event2F3() { //오른쪽 방
         }
     }
 }
+
 
 void choice2F() { //2층에서 방 선택하기
     saveData.checkpoint = 2;
@@ -185,7 +233,9 @@ void choice2F() { //2층에서 방 선택하기
 
 
     while (1) {
-        event2F1();
+        if (!alarmOff) {
+            event2F1();
+        }
         int s = _getch();
         
         if (s == 'L' || s == 'l') {
@@ -231,8 +281,9 @@ void choice2F() { //2층에서 방 선택하기
 }
 
 void leftroom2F() {//조직방
-
-    event2F2();
+    if (!alarmOff) {
+        event2F2();
+    }
     system("cls");
     fileprint("leftroom.txt");
     scene(
@@ -264,7 +315,9 @@ void leftroom2F() {//조직방
 
 
 void rightroom2F() {//보안실
-    event2F3();
+    if (!alarmOff) {
+        event2F3();
+    }
     system("cls");
     fileprint("password.txt");
     printf("\n");
