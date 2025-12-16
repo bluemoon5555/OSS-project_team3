@@ -68,7 +68,7 @@ void printMenu() {
 // ---------------------- 게임 시작 ----------------------
 void startStory() {
     fileprint("howtoplay.txt");
-    slowPrintChar("넘어가려면 [Enter]를 입력하세요",18);
+    slowPrintChar("넘어가려면 [Enter]를 입력하세요", 18);
 
     int s = _getch();
     while (1) {
@@ -162,7 +162,13 @@ void loadGame() {
         slowPrintChar("저장된 데이터를 불러왔습니다.\n", 30);
 
         if (saveData.checkpoint == 1)
-            slowPrintChar(" 저장된 위치: 이야기 시작 이후 구간입니다.\n", 30);
+            slowPrintChar(" 저장된 위치: 1층\n", 30);
+        else if (saveData.checkpoint == 2)
+            slowPrintChar(" 저장된 위치: 2층\n", 30);
+        else if (saveData.checkpoint == 3)
+            slowPrintChar(" 저장된 위치: 3층\n", 30);
+        else if (saveData.checkpoint == 4)
+            slowPrintChar(" 저장된 위치: 4층\n", 30);
 
         slowPrintChar("\n곧 이어서 게임이 진행됩니다...\n", 30);
         Sleep(1500);
