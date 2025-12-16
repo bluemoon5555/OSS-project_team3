@@ -122,7 +122,7 @@ void room1() {
     // --- 문제 시작 화면 ---
     system("cls");
     showAsciiArtFull("room1.txt");
-    slowPrintChar("\n=== 4층 방 1 ===\n", 28);
+    printf("\n=== 4층 방 1 ===\n");
 
     int ans;
 
@@ -137,6 +137,9 @@ void room1() {
         scanf("%d", &ans);
 
         if (ans == 3) {
+            system("cls");
+            fileprint("room1.txt");
+            printf("\n=== 4층 방 1 ===\n");
             slowPrintChar("\n정답입니다. 복도로 나갑니다.\n", 20);
             printf("\n[Enter 키를 눌러 복도로 이동]\n");
             while (_getch() != '\r');
@@ -144,13 +147,16 @@ void room1() {
             corridor();
             return;
         }
-
+        system("cls");
+        fileprint("room1.txt");
+        printf("\n=== 4층 방 1 ===\n");
         slowPrintChar("\n틀렸습니다. 다시 시도하세요.\n", 20);
-        Sleep(400);
+        Sleep(800);
 
         system("cls");
         showAsciiArtFull("room1.txt");
-        slowPrintChar("\n=== 4층 방 1 ===\n다시 문제를 풉니다.\n", 28);
+        printf("\n=== 4층 방 1 ===\n");
+        slowPrintChar("다시 문제를 풉니다.\n", 28);
     }
 }
 
