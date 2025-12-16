@@ -42,6 +42,7 @@ void menu() {
         switch (choice) {
         case 1:
             system("cls"); // 메뉴 화면 지우고 게임 시작
+            initNewGame();
             startStory();
             return;
         case 2:
