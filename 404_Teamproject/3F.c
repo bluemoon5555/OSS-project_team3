@@ -95,7 +95,7 @@ void floor3() {
         saveGame();
         system("cls");
         showAsciiArtFull("31.txt");
-        slowPrintChar("\n[L: 왼쪽(행정실) | R: 오른쪽(빈 방) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n", 18);
+        printf("\n[L: 왼쪽(행정실) | R: 오른쪽(빈 방) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
 
         int key = _getch();
 
@@ -107,6 +107,12 @@ void floor3() {
         else if (key == 'r' || key == 'R') {
             floor3_right();
             continue;
+        }
+        else if (key=='i'||key=='I') {
+            system("cls");
+            showInventory();
+            system("cls");
+            fileprint("31.txt");
         }
         else if (key == 'u' || key == 'U') {
             system("cls");
