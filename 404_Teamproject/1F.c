@@ -198,6 +198,26 @@ void event1F() { //1층
 
             //  2번 선택
             else if (c == '2') {
+                system("cls");
+                printf("망치를 사용할까?\n\n");
+                printf("1. 사용한다.\n");
+                printf("2. 무서워...사용하지 않는다.\n");
+
+                char s = _getch();
+
+                if (s == '1' && hasItem("망치")) {
+                    printf("\n망치로 조직원을 제압했다!\n");
+                    Sleep(1000);
+                    printf("조용히 지나갈 수 있었다.\n");
+                    printf("\n[아무 키나 누르세요]");
+                    _getch();
+
+                    system("cls");
+                    fileprint("rightroom.txt");
+                    return;
+                }
+
+
                 printf("\n조직원과 마주쳤다!\n");
                 Sleep(1000);
                 chooseMiniGame();
