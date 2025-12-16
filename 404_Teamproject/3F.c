@@ -13,10 +13,6 @@
 #include"story.h"
 
 
-
-char inventory[MAX_ITEMS][50];
-int itemCount = 0;
-
 void addItem(const char* item) {
     if (saveData.itemCount >= MAX_ITEMS) return;
 

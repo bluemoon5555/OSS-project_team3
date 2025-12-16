@@ -17,3 +17,4 @@ extern SaveData saveData;
 void saveGame();
 int loadSaveData();
 void resumeGame();
+void initNewGame();
