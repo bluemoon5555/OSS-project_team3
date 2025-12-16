@@ -6,11 +6,11 @@
 #include"game2.h"
 #include "badending.h"
 
-// void SetConsoleView()
-// {
-//     system("mode con:cols=100 lines=25");
-//     system("title Sequence Memory Game");
-// }
+//void SetConsoleView()
+//{
+//    system("mode con:cols=100 lines=25");
+//    system("title Sequence Memory Game");
+//}
 
 void number_Game() {
     SetConsoleView();
@@ -56,13 +56,14 @@ void number_Game() {
                 ok = 0;
         }
 
-        if (!ok){
-             badending();
-             return;
+        if (!ok) {
+            badending();
+            return;
         }
         else {
             printf("맞았습니다.\n");
-            break;
+            Sleep(1000);
+            return;
         }
 
     }

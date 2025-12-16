@@ -193,8 +193,11 @@ void startGame() {
 			GotoXY(22, 0);
 			printf("Score : %d ", score);
 			if (score >= GOAL_SCORE) {
+				system("cls");
+				printf("성공!");
 				// 목표 점수 달성하면 다음 상황으로 넘어가기. 못하면 게임오버, 다시 재도전
-				break;
+				Sleep(1000);
+				return;
 			}
 		}
 
