@@ -169,6 +169,7 @@ void event1F() { //1층
             printf("\n시간 초과! 조직원이 발견했다!\n");
             Sleep(1000);
             chooseMiniGame();
+            fileprint("floor1.txt");
             return;
         }
 
@@ -213,7 +214,7 @@ void event1F() { //1층
                     _getch();
 
                     system("cls");
-                    fileprint("rightroom.txt");
+                    fileprint("floor1.txt");
                     return;
                 }
 
@@ -221,6 +222,7 @@ void event1F() { //1층
                 printf("\n조직원과 마주쳤다!\n");
                 Sleep(1000);
                 chooseMiniGame();
+                fileprint("floor1.txt");
                 return;
             }
         }

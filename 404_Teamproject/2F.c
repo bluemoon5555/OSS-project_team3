@@ -100,6 +100,8 @@ void event2F1() { // 2층 복도
                     printf("\n담요가 없다!\n");
                     Sleep(800);
                     chooseMiniGame();
+                    fileprint("floor2.txt");
+                    printf("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
                     return;
                 }
             }
@@ -129,6 +131,8 @@ void event2F1() { // 2층 복도
                 printf("\n조직원과 마주쳤다!\n");
                 Sleep(1000);
                 chooseMiniGame();
+                fileprint("floor2.txt");
+                printf("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
                 return;
             }
         }
@@ -175,6 +179,7 @@ void event2F2() { // 조직원 방
                     printf("\n담요가 없다!\n");
                     Sleep(800);
                     chooseMiniGame();
+                    fileprint("leftroom.txt");
                     return;
                 }
             }
@@ -204,6 +209,7 @@ void event2F2() { // 조직원 방
                 printf("\n조직원과 마주쳤다!\n");
                 Sleep(1000);
                 chooseMiniGame();
+                fileprint("leftroom.txt");
                 return;
             }
         }
@@ -251,6 +257,7 @@ void event2F3() { // 보안실
                     printf("\n담요가 없다!\n");
                     Sleep(800);
                     chooseMiniGame();
+                    fileprint("rightroom.txt");
                     return;
                 }
             }
@@ -281,6 +288,7 @@ void event2F3() { // 보안실
                 printf("\n조직원과 마주쳤다!\n");
                 Sleep(1000);
                 chooseMiniGame();
+                fileprint("rightroom.txt");
                 return;
             }
 
