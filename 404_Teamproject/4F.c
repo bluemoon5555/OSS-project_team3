@@ -303,6 +303,7 @@ void corridor() {
                 else if (subKey == 27) {
                     system("cls");
                     showAsciiArtFull("room2.txt");
+                    printf("\n[L: 왼쪽(감금된 방) | R: 오른쪽(창고) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
                     break;
                 }
             }
@@ -313,6 +314,7 @@ void corridor() {
             room3();    // <- 새 방 진입
             system("cls");
             showAsciiArtFull("room2.txt");
+            printf("\n[L: 왼쪽(감금된 방) | R: 오른쪽(창고) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
         }
 
 
@@ -325,7 +327,8 @@ void corridor() {
             system("cls");
             floor3();   // ⭐ 바로 3층 호출
             system("cls");
-            showAsciiArtFull("room2.txt"); // 복귀 시 4층 복도 다시 그림
+            showAsciiArtFull("room2.txt");
+            printf("\n[L: 왼쪽(감금된 방) | R: 오른쪽(창고) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
         }
 
         else if (key == 27) {
