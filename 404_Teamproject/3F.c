@@ -221,8 +221,8 @@ void showDiaryStory() {
     slowPrintChar("조금이라도 눈에 거슬리면, 곧바로 폭언과 폭력이 뒤따른다.\n", 28);
     slowPrintChar("난 이 지옥같은 곳에서 어떻게든 탈출하기위해 틈나는 대로 정보를 모으고 있다….\n", 28);
     slowPrintChar("며칠 전, 복도에서 조직원들이 떠드는 걸 들었다.\n", 28);
-    slowPrintChar("1층의 열쇠 보관방에는 경보 시스템이 깔려 있어서, 함부로 다가가면 바로 경보가 울린다고 했다.\n", 28);
-    slowPrintChar("그리고 그 경보는 2층 보안실에서만 끌 수 있다고….\n", 28);
+    slowPrintChar("조직원은 감시 시스템 장치가 꺼져 있으면 활동을 하지 않고...\n", 28);
+    slowPrintChar("그 장치는 2층 보안실에서만 끌 수 있다고….\n", 28);
     slowPrintChar(" 그 말이 사실이라면, 정문 열쇠를 얻기 위해서는 보안실을 먼저 공략해야한다.\n", 28);
     printf("\n[Enter]");
     while (_getch() != '\r');
