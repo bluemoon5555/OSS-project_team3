@@ -197,6 +197,7 @@ void startGame() {
 				printf("성공!");
 				// 목표 점수 달성하면 다음 상황으로 넘어가기. 못하면 게임오버, 다시 재도전
 				Sleep(1000);
+				system("cls");
 				return;
 			}
 		}
