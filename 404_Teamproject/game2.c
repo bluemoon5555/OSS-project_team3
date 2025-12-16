@@ -63,6 +63,7 @@ void number_Game() {
         else {
             printf("맞았습니다.\n");
             Sleep(1000);
+            system("cls");
             return;
         }
 

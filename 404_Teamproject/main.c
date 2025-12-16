@@ -18,20 +18,20 @@ int main()
 	//초반 스토리 menu
 	menu();
 
-    //4층
+	//4층
 	room1();
 	corridor();
 
-    // 4층 관련 시작 함수 호출 제거. 바로 3층 루프 실행.
+	// 4층 관련 시작 함수 호출 제거. 바로 3층 루프 실행.
 	floor3();
 
-    //2층
+	//2층
 	system("cls");
 	choice2F();
 
 	//1층
 	choice1F();
-	
+
 	//미니게임 1
 	SetConsoleView();
 	startGame();

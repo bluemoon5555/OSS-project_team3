@@ -123,6 +123,7 @@ void start_game() {
     if (gameOver == 2) {
         printf("\n\n   Success!! \n\n");
         Sleep(1000);
+        system("cls");
         return;
     }
     else {
