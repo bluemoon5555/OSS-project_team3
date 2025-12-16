@@ -291,7 +291,16 @@ void corridor() {
 
         else if (key == 'L' || key == 'l') {
             system("cls");
-            room1();
+            fileprint("room1.txt");
+            while (1) {
+                int s = _getch();
+                if (s == 27) { 
+                    system("cls");
+                    showAsciiArtFull("room2.txt");
+                    printf("\n[L: 왼쪽(감금된 방) | R: 오른쪽(창고) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
+                    break; 
+                }
+            }
         }
         
             
