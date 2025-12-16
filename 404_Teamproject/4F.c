@@ -275,10 +275,10 @@ void room3_plus() {
 
 void corridor() {
     saveData.checkpoint = 4;
-        saveGame();
+    saveGame();
     system("cls");
     showAsciiArtFull("room2.txt");
-
+    printf("\n[L: 왼쪽(감금된 방) | R: 오른쪽(창고) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
     while (1) {
         int key = _getch();
 

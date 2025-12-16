@@ -231,14 +231,14 @@ void choice2F() { //2층에서 방 선택하기
     saveGame();
     system("cls");
     fileprint("floor2.txt");
-    slowPrintChar("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n", 30);
+    printf("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
 
     while (1) {
         if (!alarmOff) {
             event2F1();
         }
         int s = _getch();
-        
+
         if (s == 'L' || s == 'l') {
             system("cls");
             leftroom2F();
@@ -323,51 +323,54 @@ void rightroom2F() {//보안실
     if (!alarmOff) {
         event2F3();
     }
-    system("cls");
-    fileprint("password.txt");
-    printf("\n");
-    char input[10];
-    int i = 0;
-    printf("비밀번호를 입력하세요 : ");
     while (1) {
-        int s = _getch();
-        if (s == 27) {
-            system("cls");
-            choice2F();     // 2층 선택 화면으로 복귀
-            return;
-        }
-        if (s == '\r') { //엔터 입력 시 종료
-            input[i] = '\0';
-            break;
-        }
-        if (s == 8) { // 비밀번호 지우기
-            if (i > 0) {
-                i--;
+        system("cls");
+        fileprint("password.txt");
+        printf("\n");
+        char input[10];
+        int i = 0;
+        printf("비밀번호를 입력하세요 : ");
+        while (1) {
+            int s = _getch();
+            if (s == 27) {
+                system("cls");
+                choice2F();     // 2층 선택 화면으로 복귀
+                return;
+            }
+            if (s == '\r') { //엔터 입력 시 종료
                 input[i] = '\0';
-                printf("\r비밀번호를 입력하세요 : ");
-                for (int k = 0;k < i;k++)putchar('*');
+                break;
+            }
+            if (s == 8) { // 비밀번호 지우기
+                if (i > 0) {
+                    i--;
+                    input[i] = '\0';
+                    printf("\r비밀번호를 입력하세요 : ");
+                    for (int k = 0;k < i;k++)putchar('*');
 
-                putchar(' ');
-                printf("\r비밀번호를 입력하세요 : ");
-                for (int k = 0;k < i;k++)putchar('*');
+                    putchar(' ');
+                    printf("\r비밀번호를 입력하세요 : ");
+                    for (int k = 0;k < i;k++)putchar('*');
 
+                    fflush(stdout);
+                }
+                continue;
+            }
+            if (s >= '0' && s <= '9' && i < 9) {
+                putchar('*');
+                input[i++] = s;
                 fflush(stdout);
             }
-            continue;
-        }
-        if (s >= '0' && s <= '9' && i < 9) {
-            putchar('*');
-            input[i++] = s;
-            fflush(stdout);
-        }
 
-    }
-    int password = atoi(input);
-    system("cls");
-    if (password != 2115) { //비밀번호 일치하는지 확인
+        }
+        int password = atoi(input);
+        
+        if (password == 2115) { //비밀번호 일치하는지 확인
+            break;
+        }
+        system("cls");
         printf("비밀번호가 일치하지 않습니다.");
         Sleep(1500);
-        return;
     }
     fileprint("password.txt");
     printf("문이 열립니다.");
