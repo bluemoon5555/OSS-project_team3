@@ -63,7 +63,7 @@ void choice1F() { // 1층
     while (1) {
         system("cls");
         fileprint("floor1.txt");
-        slowPrintChar("\n[L: 왼쪽(열쇠방) | U: 위층 | G: 현관문 | I: 인벤토리 | ESC: 종료]\n", 30);
+        printf("\n[L: 왼쪽(열쇠방) | U: 위층 | G: 현관문 | I: 인벤토리 | ESC: 종료]\n");
 
         int s = _getch();
 
@@ -77,6 +77,7 @@ void choice1F() { // 1층
             showInventory();
             system("cls");
             fileprint("floor1.txt");
+            printf("\n[L: 왼쪽(열쇠방) | U: 위층 | G: 현관문 | I: 인벤토리 | ESC: 종료]\n");
         }
 
         else if (s == 'G' || s == 'g') {
@@ -106,15 +107,22 @@ void door() {  //1층 현관문
     while (1) {
         int s = _getch();
 
-        if (hasItem("열쇠")) {
+        if (s == '1' && hasItem("열쇠")) {
             happyending();
         }
-        else {
-            slowPrintChar("\n열쇠가 필요하다.\n", 20);
+        else if (s == 27) return;
+        else if (s == 'i' || s == 'I') {
+            system("cls");
+            showInventory();
+            system("cls");
+            fileprint("door.txt");
         }
-
-        
-        if (s == 27) return;
+        else {
+            slowPrintChar("\n열쇠가 필요합니다.\n", 20);
+            Sleep(1500);
+            system("cls");
+            fileprint("door.txt");
+        }
     }
 }
 
@@ -177,6 +185,7 @@ void event1F() { //1층
                     _getch();
                     system("cls");
                     fileprint("floor1.txt");
+                    printf("\n[L: 왼쪽(열쇠방) | U: 위층 | G: 현관문 | I: 인벤토리 | ESC: 종료]\n");
                     return;
                 }
                 else {
@@ -211,6 +220,13 @@ void keyroom() {
                 slowPrintChar("이미 소유한 아이템입니다.\n", 20);
             }
             Sleep(1000);
+            system("cls");
+            fileprint("keyroom.txt");
+
+        }
+        else if (s == 'i' || s == 'I') {
+            system("cls");
+            showInventory();
             system("cls");
             fileprint("keyroom.txt");
 

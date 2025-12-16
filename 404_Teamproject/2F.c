@@ -93,6 +93,7 @@ void event2F1() { // 2층 복도
                     _getch();
                     system("cls");
                     fileprint("floor2.txt");
+                    printf("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
                     return;
                 }
                 else {
@@ -244,6 +245,7 @@ void choice2F() { //2층에서 방 선택하기
             leftroom2F();
             system("cls");
             fileprint("floor2.txt");
+            printf("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
         }
 
         else if (s == 'i' || s == 'I') {
@@ -251,6 +253,7 @@ void choice2F() { //2층에서 방 선택하기
             showInventory();
             system("cls");
             fileprint("floor2.txt");
+            printf("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
         }
 
         else if (s == 'R' || s == 'r') {
@@ -258,6 +261,7 @@ void choice2F() { //2층에서 방 선택하기
             rightroom2F();
             system("cls");
             fileprint("floor2.txt");
+            printf("\n[L: 왼쪽(조직원의 방) | R: 오른쪽(보안실) | U: 위층 | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
         }
         else if (s == 'U' || s == 'u') {
             system("cls");
@@ -364,7 +368,7 @@ void rightroom2F() {//보안실
 
         }
         int password = atoi(input);
-        
+
         if (password == 2115) { //비밀번호 일치하는지 확인
             break;
         }
@@ -372,6 +376,7 @@ void rightroom2F() {//보안실
         printf("비밀번호가 일치하지 않습니다.");
         Sleep(1500);
     }
+    system("cls");
     fileprint("password.txt");
     printf("문이 열립니다.");
     Sleep(1000);
