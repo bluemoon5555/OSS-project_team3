@@ -23,7 +23,7 @@ int loadSaveData() {
 }
 
 void initNewGame() {
-    saveData.checkpoint = 1;
+    saveData.checkpoint = 0;
     saveData.itemCount = 0;
 
     for (int i = 0; i < MAX_ITEMS; i++) {
@@ -49,6 +49,7 @@ void resumeGame() {
     case 4:
         corridor();   // 또는 room1()
         break;
+    
     default:
         initNewGame();
         startGame();  // 저장 없으면 새 게임

@@ -6,6 +6,7 @@
 #include "story.h"
 #include"2F.h"
 #include"save.h"
+#include"4F.h"
 
 //typedef struct {
 //    int checkpoint;
@@ -44,6 +45,7 @@ void menu() {
             system("cls"); // 메뉴 화면 지우고 게임 시작
             initNewGame();
             startStory();
+            room1();
             return;
         case 2:
             loadGame();
