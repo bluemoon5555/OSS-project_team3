@@ -141,7 +141,8 @@ void room1() {
             printf("\n[Enter 키를 눌러 복도로 이동]\n");
             while (_getch() != '\r');
             system("cls");
-            break;
+            corridor();
+            return;
         }
 
         slowPrintChar("\n틀렸습니다. 다시 시도하세요.\n", 20);
@@ -290,25 +291,10 @@ void corridor() {
 
         else if (key == 'L' || key == 'l') {
             system("cls");
-            showAsciiArtFull("room1.txt");
-
-            while (1) {
-                int subKey = _getch();
-
-                if (subKey == 'i' || subKey == 'I') {
-                    showInventory();
-                    system("cls");
-                    showAsciiArtFull("data.txt");
-                }
-                else if (subKey == 27) {
-                    system("cls");
-                    showAsciiArtFull("room2.txt");
-                    printf("\n[L: 왼쪽(감금된 방) | R: 오른쪽(창고) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
-                    break;
-                }
-            }
+            room1();
         }
-
+        
+            
         else if (key == 'R' || key == 'r') {
             system("cls");
             room3();    // <- 새 방 진입
@@ -328,7 +314,7 @@ void corridor() {
             floor3();   // ⭐ 바로 3층 호출
             system("cls");
             showAsciiArtFull("room2.txt");
-            printf("\n[L: 왼쪽(감금된 방) | R: 오른쪽(창고) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");
+            printf("\n[L: 왼쪽(감금된 방) | R: 오른쪽(창고) | D: 아래층 | I: 인벤토리 | ESC: 종료]\n");// 복귀 시 4층 복도 다시 그림
         }
 
         else if (key == 27) {
