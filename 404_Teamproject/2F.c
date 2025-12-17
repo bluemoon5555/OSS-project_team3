@@ -9,6 +9,11 @@
 #include "keys.h"
 #include "save.h"
 #include "story.h"
+#include "game5.h"
+#include "game4.h"
+#include "game3.h"
+#include "game2.h"
+#include "game.h"
 
 
 void slowPrintChar(const char* text, int delay) {
@@ -51,12 +56,13 @@ void fileprint(char* f) {  //텍스트 화면 출력하는 함수
 }
 
 void chooseMiniGame() {//미니게임 3개 중 랜덤출제
-    int r = rand() % 3;  // 0,1,2 중 하나
+    int r = rand() % 4;  // 0,1,2 중 하나
 
     switch (r) {
     case 0: start_game(); break;//위에서 떨어지는 거 피하기
     case 1: number_Game(); break;//게임2
     case 2: startGame(); break;//공룡게임
+    case 3: start_dodge_game();break;//조직원 피하기 게임
     }
 }
 
