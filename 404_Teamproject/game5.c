@@ -65,13 +65,13 @@ void clear_input_buffer(void) {
 /* ---------- 애니메이션 ---------- */
 void attack_animation(int direction) {
     if (direction == 0) {
-        printf("\n경비원이 왼쪽에서 공격한다!\n");
+        printf("\n조직원이 왼쪽에서 공격한다!\n");
         printf("   (    )\n");
         printf("  (   )\n");
         printf(" (  )   \n");
     }
     else {
-        printf("\n경비원이 오른쪽에서 공격한다!\n");
+        printf("\n조직원이 오른쪽에서 공격한다!\n");
         printf("   (  )\n");
         printf("    (   )\n");
         printf("     (    )\n");
@@ -86,9 +86,9 @@ void attack_animation(int direction) {
 
 void dodge_animation(int direction) {
     if (direction == 0)
-        printf("↩왼쪽으로 회피했다!\n\n");
+        printf("왼쪽으로 회피했다!\n\n");
     else
-        printf("↪오른쪽으로 회피했다!\n\n");
+        printf("오른쪽으로 회피했다!\n\n");
 
 #ifdef _WIN32
     Sleep(700);
@@ -160,13 +160,13 @@ void show_result(int success, int totalRounds) {
     printf("성공한 회피: %d / %d\n", success, totalRounds);
 
     if (success >= 4) {
-        printf("대부분의 공격을 피했다! 탈출 성공!\n");
+        printf("대부분의 공격을 피했다! \n");
         Sleep(1500);
         system("cls");
         return;
     }
     else {
-        printf("회피에 실패했다... 경비원에게 붙잡혔다.\n");
+        printf("회피에 실패했다... 조직원에게 붙잡혔다.\n");
         Sleep(1500);
         system("cls");
         badending();
